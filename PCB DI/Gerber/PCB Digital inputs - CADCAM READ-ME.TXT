@@ -1,0 +1,36 @@
+LABCENTER PROTEUS TOOL INFORMATION FILE
+=======================================
+
+In case of difficulty, please e-mail support@labcenter.co.uk
+
+Tool set up for Proteus layout 'PCB Digital inputs'.
+CADCAM generated at 15:24:01 on miércoles, 8 de marzo de 2023.
+
+File List
+---------
+Bottom Copper           : PCB Digital inputs - CADCAM Bottom Copper.TXT
+Bottom Silk Screen      : PCB Digital inputs - CADCAM Bottom Silk Screen.TXT
+Mechanical 1            : PCB Digital inputs - CADCAM Mechanical 1.TXT
+Drill                   : PCB Digital inputs - CADCAM Drill.TXT
+
+Photoplotter Setup
+------------------
+Format: RS274X, ASCII, 2.4, imperial, absolute, eob=*, LZO
+Notes:  D=Diameter, S=Side, W=Width, H=Height, C=Chamfer
+
+D10	CIRCLE  D=1.02mm                                                          DRAW
+D11	CIRCLE  D=0.89mm                                                          DRAW
+D12	SQUARE  S=2.03mm                                                          FLASH
+D13	CIRCLE  D=2.29mm                                                          FLASH
+D14	CIRCLE  D=0.2mm                                                           DRAW
+
+NC Drill Setup
+--------------
+Format: ASCII, 2.4, imperial, absolute, eob=<CR><LF>, no zero suppression.
+Notes:  Tool sizes are diameters. Layer sets are in brackets - 0=TOP, 15=BOTTOM, 1-14=INNER.
+
+T01	1.02mm (0-15)
+T02	1.27mm (0-15)
+
+
+[END OF FILE]

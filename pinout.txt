@@ -1,0 +1,9 @@
+puerto 6.1 controla BU1
+puerto 6.2 controla BU2
+Puerto 6.3 controla BU3
+Puerto 6.4 controla BU4
+
+bytes
+0 1  2 3  4 5  6 
+0101 00FF 00FF FF
+dBdu  NPU NPB  Vel
