@@ -26,6 +26,7 @@
 			<Item Name="Config -- cluster.ctl" Type="VI" URL="../Support/Config -- cluster.ctl"/>
 			<Item Name="Load config.vi" Type="VI" URL="../Support/Load config.vi"/>
 			<Item Name="Wait for home.vi" Type="VI" URL="../Support/Wait for home.vi"/>
+			<Item Name="Go to zero.vi" Type="VI" URL="../Support/Go to zero.vi"/>
 		</Item>
 		<Item Name="Config" Type="Folder">
 			<Item Name="config.ini" Type="Document" URL="../config.ini"/>
