@@ -162,7 +162,7 @@ void loop() {
           break;
         }
         //delay(1);
-        delayMicroseconds(250);
+        delayMicroseconds(50);
       }  // End of home for      
     } // End of home routine
 
