@@ -17,13 +17,10 @@
 		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Support" Type="Folder">
-			<Item Name="States -- typedef.ctl" Type="VI" URL="../States -- typedef.ctl"/>
-			<Item Name="Control references -- typedef.ctl" Type="VI" URL="../Control references -- typedef.ctl"/>
 			<Item Name="Set button status.vi" Type="VI" URL="../Support/Set button status.vi"/>
 			<Item Name="CCW button.ctl" Type="VI" URL="../Public/Controls/CCW button.ctl"/>
 			<Item Name="CW button.ctl" Type="VI" URL="../Public/Controls/CW button.ctl"/>
 			<Item Name="Save config.vi" Type="VI" URL="../Support/Save config.vi"/>
-			<Item Name="Config -- cluster.ctl" Type="VI" URL="../Support/Config -- cluster.ctl"/>
 			<Item Name="Load config.vi" Type="VI" URL="../Support/Load config.vi"/>
 			<Item Name="Wait for home.vi" Type="VI" URL="../Support/Wait for home.vi"/>
 			<Item Name="Go to zero.vi" Type="VI" URL="../Support/Go to zero.vi"/>
@@ -39,6 +36,12 @@
 			<Item Name="calcula brewster.vi" Type="VI" URL="../RPS Tools/Support/calcula brewster.vi"/>
 			<Item Name="Filtra curva experimental.vi" Type="VI" URL="../RPS Tools/Support/Filtra curva experimental.vi"/>
 			<Item Name="brewster error.vi" Type="VI" URL="../RPS Tools/Support/brewster error.vi"/>
+		</Item>
+		<Item Name="Typedef" Type="Folder">
+			<Item Name="States -- typedef.ctl" Type="VI" URL="../States -- typedef.ctl"/>
+			<Item Name="Control references -- typedef.ctl" Type="VI" URL="../Control references -- typedef.ctl"/>
+			<Item Name="Curve fitting data.ctl" Type="VI" URL="../RPS Tools/Support/Curve fitting data.ctl"/>
+			<Item Name="Config -- cluster.ctl" Type="VI" URL="../Support/Config -- cluster.ctl"/>
 		</Item>
 		<Item Name="Config" Type="Folder">
 			<Item Name="config.ini" Type="Document" URL="../config.ini"/>
@@ -124,6 +127,11 @@
 				<Item Name="ex_CorrectErrorChain.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_CorrectErrorChain.vi"/>
 				<Item Name="ex_Modify Signals Names.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_Modify Signals Names.vi"/>
 				<Item Name="ex_Modify Signal Name.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_Modify Signal Name.vi"/>
+				<Item Name="Read Delimited Spreadsheet.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet.vi"/>
+				<Item Name="Read Delimited Spreadsheet (DBL).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (DBL).vi"/>
+				<Item Name="Read Lines From File (with error IO).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Lines From File (with error IO).vi"/>
+				<Item Name="Read Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (I64).vi"/>
+				<Item Name="Read Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (string).vi"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 		</Item>
