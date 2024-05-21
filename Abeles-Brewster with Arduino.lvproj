@@ -27,13 +27,25 @@
 			<Item Name="Load config.vi" Type="VI" URL="../Support/Load config.vi"/>
 			<Item Name="Wait for home.vi" Type="VI" URL="../Support/Wait for home.vi"/>
 			<Item Name="Go to zero.vi" Type="VI" URL="../Support/Go to zero.vi"/>
+			<Item Name="CURVA TEÓRICA RPS.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/CURVA TEÓRICA RPS.vi"/>
+			<Item Name="crea vector theta cero r.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector theta cero r.vi"/>
+			<Item Name="crea vector de resolución.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector de resolución.vi"/>
+			<Item Name="forma arreglo de números complejos.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/forma arreglo de números complejos.vi"/>
+			<Item Name="Cálculo de nsr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/Cálculo de nsr.vi"/>
+			<Item Name="cálculo npr y dr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/cálculo npr y dr.vi"/>
+			<Item Name="cálculo Br Cr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/cálculo Br Cr.vi"/>
+			<Item Name="divide matriz en submatrices.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/divide matriz en submatrices.vi"/>
+			<Item Name="ABRE ARCHIVO.vi" Type="VI" URL="../RPS Tools/Support/ABRE ARCHIVO.vi"/>
+			<Item Name="calcula brewster.vi" Type="VI" URL="../RPS Tools/Support/calcula brewster.vi"/>
+			<Item Name="Filtra curva experimental.vi" Type="VI" URL="../RPS Tools/Support/Filtra curva experimental.vi"/>
+			<Item Name="brewster error.vi" Type="VI" URL="../RPS Tools/Support/brewster error.vi"/>
 		</Item>
 		<Item Name="Config" Type="Folder">
 			<Item Name="config.ini" Type="Document" URL="../config.ini"/>
 		</Item>
 		<Item Name="Control de MaP.lvlib" Type="Library" URL="../Control de MaP.lvlib"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
-		<Item Name="MAIN  AJUSTE,ANALISIS,SIMULACION RPS.vi" Type="VI" URL="../RPS Tools/MAIN  AJUSTE,ANALISIS,SIMULACION RPS.vi"/>
+		<Item Name="RPS Tools.vi" Type="VI" URL="../RPS Tools/RPS Tools.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
@@ -114,18 +126,6 @@
 				<Item Name="ex_Modify Signal Name.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_Modify Signal Name.vi"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="CURVA TEÓRICA RPS.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/CURVA TEÓRICA RPS.vi"/>
-			<Item Name="crea vector theta cero r.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector theta cero r.vi"/>
-			<Item Name="crea vector de resolución.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector de resolución.vi"/>
-			<Item Name="forma arreglo de números complejos.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/forma arreglo de números complejos.vi"/>
-			<Item Name="Cálculo de nsr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/Cálculo de nsr.vi"/>
-			<Item Name="cálculo npr y dr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/cálculo npr y dr.vi"/>
-			<Item Name="cálculo Br Cr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/cálculo Br Cr.vi"/>
-			<Item Name="divide matriz en submatrices.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/divide matriz en submatrices.vi"/>
-			<Item Name="ABRE ARCHIVO.vi" Type="VI" URL="../RPS Tools/Support/ABRE ARCHIVO.vi"/>
-			<Item Name="calcula brewster.vi" Type="VI" URL="../RPS Tools/Support/calcula brewster.vi"/>
-			<Item Name="Filtra curva experimental.vi" Type="VI" URL="../RPS Tools/Support/Filtra curva experimental.vi"/>
-			<Item Name="brewster error.vi" Type="VI" URL="../RPS Tools/Support/brewster error.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="My Application" Type="EXE">
