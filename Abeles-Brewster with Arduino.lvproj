@@ -33,6 +33,7 @@
 		</Item>
 		<Item Name="Control de MaP.lvlib" Type="Library" URL="../Control de MaP.lvlib"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
+		<Item Name="MAIN  AJUSTE,ANALISIS,SIMULACION RPS.vi" Type="VI" URL="../RPS Tools/MAIN  AJUSTE,ANALISIS,SIMULACION RPS.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
@@ -93,8 +94,38 @@
 				<Item Name="VISA Configure Serial Port (Serial Instr).vi" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port (Serial Instr).vi"/>
 				<Item Name="VISA Configure Serial Port (Instr).vi" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port (Instr).vi"/>
 				<Item Name="VISA Configure Serial Port" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port"/>
+				<Item Name="NI_Matrix.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/Matrix/NI_Matrix.lvlib"/>
+				<Item Name="Waveform Array To Dynamic.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/Waveform Array To Dynamic.vi"/>
+				<Item Name="Dynamic To Waveform Array.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/Dynamic To Waveform Array.vi"/>
+				<Item Name="subFilter.vi" Type="VI" URL="/&lt;vilib&gt;/express/express analysis/FilterBlock.llb/subFilter.vi"/>
+				<Item Name="NI_MAPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MAPro.lvlib"/>
+				<Item Name="NI_MABase.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MABase.lvlib"/>
+				<Item Name="Timestamp Subtract.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/Timestamp Subtract.vi"/>
+				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
+				<Item Name="DU64_U32SubtractWithBorrow.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/DU64_U32SubtractWithBorrow.vi"/>
+				<Item Name="Check for Equality.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/WDTOps.llb/Check for Equality.vi"/>
+				<Item Name="NI_AALPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/NI_AALPro.lvlib"/>
+				<Item Name="ex_SmoothingDesign.vi" Type="VI" URL="/&lt;vilib&gt;/express/express analysis/FilterBlock.llb/ex_SmoothingDesign.vi"/>
+				<Item Name="Express Waveform Components.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/Express Waveform Components.vi"/>
+				<Item Name="ex_WaveformAttribs.ctl" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/ex_WaveformAttribs.ctl"/>
+				<Item Name="ex_GetAllExpressAttribs.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/ex_GetAllExpressAttribs.vi"/>
+				<Item Name="ex_CorrectErrorChain.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_CorrectErrorChain.vi"/>
+				<Item Name="ex_Modify Signals Names.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_Modify Signals Names.vi"/>
+				<Item Name="ex_Modify Signal Name.vi" Type="VI" URL="/&lt;vilib&gt;/express/express shared/ex_Modify Signal Name.vi"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
+			<Item Name="CURVA TEÓRICA RPS.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/CURVA TEÓRICA RPS.vi"/>
+			<Item Name="crea vector theta cero r.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector theta cero r.vi"/>
+			<Item Name="crea vector de resolución.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector de resolución.vi"/>
+			<Item Name="forma arreglo de números complejos.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/forma arreglo de números complejos.vi"/>
+			<Item Name="Cálculo de nsr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/Cálculo de nsr.vi"/>
+			<Item Name="cálculo npr y dr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/cálculo npr y dr.vi"/>
+			<Item Name="cálculo Br Cr.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/cálculo Br Cr.vi"/>
+			<Item Name="divide matriz en submatrices.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/divide matriz en submatrices.vi"/>
+			<Item Name="ABRE ARCHIVO.vi" Type="VI" URL="../RPS Tools/Support/ABRE ARCHIVO.vi"/>
+			<Item Name="calcula brewster.vi" Type="VI" URL="../RPS Tools/Support/calcula brewster.vi"/>
+			<Item Name="Filtra curva experimental.vi" Type="VI" URL="../RPS Tools/Support/Filtra curva experimental.vi"/>
+			<Item Name="brewster error.vi" Type="VI" URL="../RPS Tools/Support/brewster error.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="My Application" Type="EXE">
