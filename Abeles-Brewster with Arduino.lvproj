@@ -23,7 +23,7 @@
 			<Item Name="Save config.vi" Type="VI" URL="../Support/Save config.vi"/>
 			<Item Name="Load config.vi" Type="VI" URL="../Support/Load config.vi"/>
 			<Item Name="Wait for home.vi" Type="VI" URL="../Support/Wait for home.vi"/>
-			<Item Name="Go to zero.vi" Type="VI" URL="../Support/Go to zero.vi"/>
+			<Item Name="Wait for zero.vi" Type="VI" URL="../Support/Wait for zero.vi"/>
 			<Item Name="CURVA TEÓRICA RPS.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/CURVA TEÓRICA RPS.vi"/>
 			<Item Name="crea vector theta cero r.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector theta cero r.vi"/>
 			<Item Name="crea vector de resolución.vi" Type="VI" URL="../RPS Tools/CURVA TEÓRICA RPS/crea vector de resolución.vi"/>
