@@ -116,11 +116,12 @@ void loop() {
     else if (dataAtPort[0] == HOME){  // Home routine
       Serial.println("Homing");
       delay(30);
-      int dir = dataAtPort[1];
+      int dir1 = dataAtPort[1];
+      int dir2 = dataAtPort[2];
       
-      directionMotor1 = dir;
+      directionMotor1 = dir1;
       stepStyleMotor1 = DOUBLE;
-      directionMotor2 = dir;
+      directionMotor2 = dir2;
       stepStyleMotor2 = DOUBLE;
 
       for (int current_step = 1; current_step <= 180000; current_step++) {
