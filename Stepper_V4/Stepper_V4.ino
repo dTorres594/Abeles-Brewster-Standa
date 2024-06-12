@@ -116,13 +116,16 @@ void loop() {
     else if (dataAtPort[0] == HOME){  // Home routine
       Serial.println("Homing");
       delay(30);
-      int dir1 = dataAtPort[1];
-      int dir2 = dataAtPort[2];
+      //int dir1 = dataAtPort[1];
+      //int dir2 = dataAtPort[2];
       
-      directionMotor1 = dir1;
+      directionMotor1 = dataAtPort[1];
       stepStyleMotor1 = DOUBLE;
-      directionMotor2 = dir2;
+      directionMotor2 = dataAtPort[2];
       stepStyleMotor2 = DOUBLE;
+
+      ES1 = digitalRead(endStop1Pin);
+      ES2 = digitalRead(endStop2Pin);
 
       for (int current_step = 1; current_step <= 180000; current_step++) {
         if (Serial.available()) { // See if new commands are available at the port
@@ -146,24 +149,24 @@ void loop() {
             }
         }
         
-        endStop1 = digitalRead(endStop1Pin);
-        endStop2 = digitalRead(endStop2Pin);
+        //endStop1 = digitalRead(endStop1Pin);
+        //endStop2 = digitalRead(endStop2Pin);
         //Serial.println("ES" + (String)endStop1 + "," + (String)endStop2);
-        if (!endStop1){         
+        if (!ES1){         
           motor1->onestep(directionMotor1, stepStyleMotor1);
           positionMotor1++;
         }
-        if (!endStop2){
+        if (!ES2){
           motor2->onestep(directionMotor2, stepStyleMotor2);
           positionMotor2++;
         }
-        if (endStop1 && endStop2){
+        if (ES1 && ES2){
           Serial.println("Home");
           delay(30);
           break;
         }
         //delay(1);
-        delayMicroseconds(50);
+        delayMicroseconds(200);
       }  // End of home for      
     } // End of home routine
 
