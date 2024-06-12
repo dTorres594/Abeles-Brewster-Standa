@@ -36,6 +36,7 @@
 			<Item Name="calcula brewster.vi" Type="VI" URL="../RPS Tools/Support/calcula brewster.vi"/>
 			<Item Name="Filtra curva experimental.vi" Type="VI" URL="../RPS Tools/Support/Filtra curva experimental.vi"/>
 			<Item Name="brewster error.vi" Type="VI" URL="../RPS Tools/Support/brewster error.vi"/>
+			<Item Name="Calculate Home direction.vi" Type="VI" URL="../Support/Calculate Home direction.vi"/>
 		</Item>
 		<Item Name="Typedef" Type="Folder">
 			<Item Name="States -- typedef.ctl" Type="VI" URL="../States -- typedef.ctl"/>
