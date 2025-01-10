@@ -285,6 +285,46 @@
 				<Property Name="Source[0].type" Type="Str">EXE</Property>
 				<Property Name="SourceCount" Type="Int">1</Property>
 			</Item>
+			<Item Name="RPS Tools" Type="EXE">
+				<Property Name="App_copyErrors" Type="Bool">true</Property>
+				<Property Name="App_INI_aliasGUID" Type="Str">{F0F9D621-12F5-4AAB-B552-2239A8284843}</Property>
+				<Property Name="App_INI_GUID" Type="Str">{70BAF9BA-8A20-4F82-802E-A21CF9B43C4B}</Property>
+				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
+				<Property Name="App_serverType" Type="Int">0</Property>
+				<Property Name="Bld_autoIncrement" Type="Bool">true</Property>
+				<Property Name="Bld_buildCacheID" Type="Str">{2A5D1DA1-4ABB-4C76-9FDC-D86196150E9A}</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">RPS Tools</Property>
+				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
+				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
+				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../builds/NI_AB_PROJECTNAME/RPS Tools</Property>
+				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
+				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{A6E78CD8-1A66-4455-A378-5AA7015CD811}</Property>
+				<Property Name="Bld_version.major" Type="Int">1</Property>
+				<Property Name="Destination[0].destName" Type="Str">RPS.exe</Property>
+				<Property Name="Destination[0].path" Type="Path">../builds/NI_AB_PROJECTNAME/RPS Tools/RPS.exe</Property>
+				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
+				<Property Name="Destination[0].type" Type="Str">App</Property>
+				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
+				<Property Name="Destination[1].path" Type="Path">../builds/NI_AB_PROJECTNAME/RPS Tools/data</Property>
+				<Property Name="DestinationCount" Type="Int">2</Property>
+				<Property Name="Source[0].itemID" Type="Str">{C412C4D9-2AE1-40AD-9DF4-380701E46A29}</Property>
+				<Property Name="Source[0].type" Type="Str">Container</Property>
+				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/RPS Tools.vi</Property>
+				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
+				<Property Name="Source[1].type" Type="Str">VI</Property>
+				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="TgtF_companyName" Type="Str">Centro de Investigaciones en Optica</Property>
+				<Property Name="TgtF_fileDescription" Type="Str">RPS Tools</Property>
+				<Property Name="TgtF_internalName" Type="Str">RPS Tools</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2024 Centro de Investigaciones en Optica</Property>
+				<Property Name="TgtF_productName" Type="Str">RPS Tools</Property>
+				<Property Name="TgtF_targetfileGUID" Type="Str">{3B884556-901C-416E-ACED-D008364847BA}</Property>
+				<Property Name="TgtF_targetfileName" Type="Str">RPS.exe</Property>
+				<Property Name="TgtF_versionIndependent" Type="Bool">true</Property>
+			</Item>
 		</Item>
 	</Item>
 </Project>
