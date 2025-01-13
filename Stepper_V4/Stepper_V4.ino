@@ -39,13 +39,13 @@ void setup() {
   while (!Serial) {
     Serial.println("Starting...");
   }
-  Serial.println("Serial connected");
+  //Serial.println("Serial connected");
   if (!AFMS.begin()) {         // create with the default frequency 1.6KHz
     Serial.println("Could not find Motor Shield. Check wiring.");
     while (1);
   }
-  Serial.println("Shield connected");
-  Serial.flush();
+  //Serial.print("Shield connected\n");
+  //delay(300);
 
   pinMode(endStop1Pin, INPUT);
   attachInterrupt(digitalPinToInterrupt(endStop1Pin),endStop1Changed,CHANGE);
@@ -56,6 +56,9 @@ void setup() {
   //attachInterrupt(digitalPinToInterrupt(endStop2Pin),endStop2Reached,RISING);
   //attachInterrupt(digitalPinToInterrupt(endStop2Pin),endStop2Free,FALLING);
   pinMode(laserOutPin, OUTPUT);
+
+  Serial.print("Shield connected\n");
+  delay(300);
 }
 
 void loop() {
