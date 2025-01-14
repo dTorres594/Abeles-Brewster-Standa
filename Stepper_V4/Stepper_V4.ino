@@ -171,6 +171,8 @@ void loop() {
         //delay(1);
         delayMicroseconds(200);
       }  // End of home for      
+      motor1->release();
+      motor2->release();
     } // End of home routine
 
     else if (dataAtPort[0] == MOVE) { // Move routine
@@ -300,7 +302,7 @@ void loop() {
       delay(50);
       motor1->release();
       motor2->release();
-      Serial.println("fin"); Serial.flush();            
+      Serial.println("fin");          
     } // End of movement routine
   }  // End of data available at port
 } // End of loop
