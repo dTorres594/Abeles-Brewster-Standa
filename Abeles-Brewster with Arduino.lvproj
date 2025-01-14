@@ -37,6 +37,7 @@
 			<Item Name="Filtra curva experimental.vi" Type="VI" URL="../RPS Tools/Support/Filtra curva experimental.vi"/>
 			<Item Name="brewster error.vi" Type="VI" URL="../RPS Tools/Support/brewster error.vi"/>
 			<Item Name="Calculate Home direction.vi" Type="VI" URL="../Support/Calculate Home direction.vi"/>
+			<Item Name="Has time elapsed.vi" Type="VI" URL="../Support/Has time elapsed.vi"/>
 		</Item>
 		<Item Name="Typedef" Type="Folder">
 			<Item Name="States -- typedef.ctl" Type="VI" URL="../States -- typedef.ctl"/>
@@ -137,7 +138,6 @@
 				<Item Name="High Resolution Relative Seconds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Relative Seconds.vi"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="Has time elapsed.vi" Type="VI" URL="../../../Users/DONATO/Documents/Oscar Silva/2025/Elapsed time VI/Has time elapsed.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="My Application" Type="EXE">
