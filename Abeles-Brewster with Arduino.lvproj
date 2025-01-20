@@ -40,6 +40,7 @@
 			<Item Name="Has time elapsed.vi" Type="VI" URL="../Support/Has time elapsed.vi"/>
 		</Item>
 		<Item Name="Typedef" Type="Folder">
+			<Item Name="Tab names -- Type Def.ctl" Type="VI" URL="../Support/Tab names -- Type Def.ctl"/>
 			<Item Name="States -- typedef.ctl" Type="VI" URL="../States -- typedef.ctl"/>
 			<Item Name="Control references -- typedef.ctl" Type="VI" URL="../Control references -- typedef.ctl"/>
 			<Item Name="Curve fitting data.ctl" Type="VI" URL="../RPS Tools/Support/Curve fitting data.ctl"/>
@@ -51,7 +52,6 @@
 		<Item Name="Control de MaP.lvlib" Type="Library" URL="../Control de MaP.lvlib"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="RPS Tools.vi" Type="VI" URL="../RPS Tools/RPS Tools.vi"/>
-		<Item Name="Tab names -- Type Def.ctl" Type="VI" URL="../Support/Tab names -- Type Def.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
