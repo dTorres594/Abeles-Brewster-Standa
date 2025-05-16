@@ -21,6 +21,9 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="DQMH Modules" Type="Folder">
+			<Item Name="NI DAQ.lvlib" Type="Library" URL="../../NI_DAQ/Libraries/NI DAQ/NI DAQ.lvlib"/>
+		</Item>
 		<Item Name="Project Documentation" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
 			<Item Name="Documentation Images" Type="Folder">
@@ -57,6 +60,9 @@
 			<Item Name="Check Loop Error.vi" Type="VI" URL="../support/Check Loop Error.vi"/>
 			<Item Name="Error Handler - Event Handling Loop.vi" Type="VI" URL="../support/Error Handler - Event Handling Loop.vi"/>
 			<Item Name="Error Handler - Message Handling Loop.vi" Type="VI" URL="../support/Error Handler - Message Handling Loop.vi"/>
+		</Item>
+		<Item Name="Testers" Type="Folder">
+			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
