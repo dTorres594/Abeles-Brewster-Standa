@@ -61,6 +61,9 @@
 			<Item Name="Check Loop Error.vi" Type="VI" URL="../support/Check Loop Error.vi"/>
 			<Item Name="Error Handler - Event Handling Loop.vi" Type="VI" URL="../support/Error Handler - Event Handling Loop.vi"/>
 			<Item Name="Error Handler - Message Handling Loop.vi" Type="VI" URL="../support/Error Handler - Message Handling Loop.vi"/>
+			<Item Name="Configure DAQ.vi" Type="VI" URL="../support/Configure DAQ.vi"/>
+			<Item Name="Load config.vi" Type="VI" URL="../support/Load config.vi"/>
+			<Item Name="Config filepath ---constant.vi" Type="VI" URL="../support/Config filepath ---constant.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
