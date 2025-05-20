@@ -66,6 +66,8 @@
 			<Item Name="Config filepath ---constant.vi" Type="VI" URL="../support/Config filepath ---constant.vi"/>
 			<Item Name="Config dialog.vi" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Support/Config dialog.vi"/>
 			<Item Name="Validate DAQ model.vi" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Support/Validate DAQ model.vi"/>
+			<Item Name="Save config.vi" Type="VI" URL="../support/Save config.vi"/>
+			<Item Name="Start tasks.vi" Type="VI" URL="../support/Start tasks.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
