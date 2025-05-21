@@ -64,17 +64,20 @@
 			<Item Name="Configure DAQ.vi" Type="VI" URL="../support/Configure DAQ.vi"/>
 			<Item Name="Load config.vi" Type="VI" URL="../support/Load config.vi"/>
 			<Item Name="Config filepath ---constant.vi" Type="VI" URL="../support/Config filepath ---constant.vi"/>
-			<Item Name="Config dialog.vi" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Support/Config dialog.vi"/>
-			<Item Name="Validate DAQ model.vi" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Support/Validate DAQ model.vi"/>
+			<Item Name="Config dialog.vi" Type="VI" URL="../support/Config dialog.vi"/>
+			<Item Name="Validate DAQ model.vi" Type="VI" URL="../support/Validate DAQ model.vi"/>
 			<Item Name="Save config.vi" Type="VI" URL="../support/Save config.vi"/>
 			<Item Name="Start tasks.vi" Type="VI" URL="../support/Start tasks.vi"/>
+			<Item Name="Move single motor.vi" Type="VI" URL="../controls/Move single motor.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
 		</Item>
 		<Item Name="Type Definitions" Type="Folder">
-			<Item Name="Config states ---typedef.ctl" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Support/Config states ---typedef.ctl"/>
+			<Item Name="Config states ---typedef.ctl" Type="VI" URL="../controls/Config states ---typedef.ctl"/>
 			<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Controls/Motor controls---typedef.ctl"/>
+			<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
+			<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
 			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
 		</Item>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
