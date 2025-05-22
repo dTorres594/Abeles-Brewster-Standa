@@ -68,7 +68,8 @@
 			<Item Name="Validate DAQ model.vi" Type="VI" URL="../support/Validate DAQ model.vi"/>
 			<Item Name="Save config.vi" Type="VI" URL="../support/Save config.vi"/>
 			<Item Name="Start tasks.vi" Type="VI" URL="../support/Start tasks.vi"/>
-			<Item Name="Move single motor.vi" Type="VI" URL="../controls/Move single motor.vi"/>
+			<Item Name="Move single motor.vi" Type="VI" URL="../support/Move single motor.vi"/>
+			<Item Name="Move both motors.vi" Type="VI" URL="../support/Move both motors.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
@@ -78,6 +79,7 @@
 			<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Controls/Motor controls---typedef.ctl"/>
 			<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
 			<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
+			<Item Name="Move params ---typedef.ctl" Type="VI" URL="../controls/Move params ---typedef.ctl"/>
 			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
 			<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
 			<Item Name="Wake HL ---argument.ctl" Type="VI" URL="../controls/Wake HL ---argument.ctl"/>
