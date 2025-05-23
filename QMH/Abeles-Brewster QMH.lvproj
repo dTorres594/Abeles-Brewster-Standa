@@ -70,6 +70,7 @@
 			<Item Name="Start tasks.vi" Type="VI" URL="../support/Start tasks.vi"/>
 			<Item Name="Move single motor.vi" Type="VI" URL="../support/Move single motor.vi"/>
 			<Item Name="Move both motors.vi" Type="VI" URL="../support/Move both motors.vi"/>
+			<Item Name="Update position.vi" Type="VI" URL="../support/Update position.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
