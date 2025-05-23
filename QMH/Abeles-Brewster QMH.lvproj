@@ -71,6 +71,8 @@
 			<Item Name="Move single motor.vi" Type="VI" URL="../support/Move single motor.vi"/>
 			<Item Name="Move both motors.vi" Type="VI" URL="../support/Move both motors.vi"/>
 			<Item Name="Update position.vi" Type="VI" URL="../support/Update position.vi"/>
+			<Item Name="Motors FGV.vi" Type="VI" URL="../support/Motors FGV.vi"/>
+			<Item Name="Update DO status.vi" Type="VI" URL="../support/Update DO status.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
@@ -79,6 +81,7 @@
 			<Item Name="Config states ---typedef.ctl" Type="VI" URL="../controls/Config states ---typedef.ctl"/>
 			<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Controls/Motor controls---typedef.ctl"/>
 			<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
+			<Item Name="Motor FGV states ---typedef.ctl" Type="VI" URL="../controls/Motor FGV states ---typedef.ctl"/>
 			<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
 			<Item Name="Move params ---typedef.ctl" Type="VI" URL="../controls/Move params ---typedef.ctl"/>
 			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
