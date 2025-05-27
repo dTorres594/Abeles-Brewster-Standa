@@ -22,6 +22,10 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="Controls" Type="Folder">
+			<Item Name="CCW button.ctl" Type="VI" URL="../../Public/Controls/CCW button.ctl"/>
+			<Item Name="CW button.ctl" Type="VI" URL="../../Public/Controls/CW button.ctl"/>
+		</Item>
 		<Item Name="DQMH Modules" Type="Folder">
 			<Item Name="NI DAQ.lvlib" Type="Library" URL="../../NI_DAQ/Libraries/NI DAQ/NI DAQ.lvlib"/>
 		</Item>
