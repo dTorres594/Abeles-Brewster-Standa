@@ -90,9 +90,11 @@
 			<Item Name="Motor FGV states ---typedef.ctl" Type="VI" URL="../controls/Motor FGV states ---typedef.ctl"/>
 			<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
 			<Item Name="Move params ---typedef.ctl" Type="VI" URL="../controls/Move params ---typedef.ctl"/>
+			<Item Name="Paused acquisition ---argument.ctl" Type="VI" URL="../controls/Paused acquisition ---argument.ctl"/>
 			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
 			<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
 		</Item>
+		<Item Name="continous to paused.vi" Type="VI" URL="../support/continous to paused.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
