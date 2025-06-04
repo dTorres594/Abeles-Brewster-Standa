@@ -78,6 +78,10 @@
 			<Item Name="Motors FGV.vi" Type="VI" URL="../support/Motors FGV.vi"/>
 			<Item Name="Update DO status.vi" Type="VI" URL="../support/Update DO status.vi"/>
 			<Item Name="Create file reference.vi" Type="VI" URL="../support/Create file reference.vi"/>
+			<Item Name="continous to paused.vi" Type="VI" URL="../support/continous to paused.vi"/>
+			<Item Name="Get current position.vi" Type="VI" URL="../support/Get current position.vi"/>
+			<Item Name="Move and wait.vi" Type="VI" URL="../support/Move and wait.vi"/>
+			<Item Name="Send stop routine.vi" Type="VI" URL="../support/Send stop routine.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
@@ -94,7 +98,6 @@
 			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
 			<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
 		</Item>
-		<Item Name="continous to paused.vi" Type="VI" URL="../support/continous to paused.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
