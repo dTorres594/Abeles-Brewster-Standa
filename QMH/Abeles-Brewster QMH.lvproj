@@ -89,7 +89,7 @@
 		<Item Name="Type Definitions" Type="Folder">
 			<Item Name="Config states ---typedef.ctl" Type="VI" URL="../controls/Config states ---typedef.ctl"/>
 			<Item Name="Continuous acquisition ---argument.ctl" Type="VI" URL="../controls/Continuous acquisition ---argument.ctl"/>
-			<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../../NI_DAQ/Libraries/NI DAQ/Controls/Motor controls---typedef.ctl"/>
+			<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../Controls/Motor controls---typedef.ctl"/>
 			<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
 			<Item Name="Motor FGV states ---typedef.ctl" Type="VI" URL="../controls/Motor FGV states ---typedef.ctl"/>
 			<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
