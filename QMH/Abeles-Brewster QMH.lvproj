@@ -13,6 +13,7 @@
 		<Property Name="IOScan.Priority" Type="UInt">9</Property>
 		<Property Name="IOScan.ReportModeConflict" Type="Bool">true</Property>
 		<Property Name="IOScan.StartEngineOnDeploy" Type="Bool">false</Property>
+		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
@@ -30,9 +31,7 @@
 			<Item Name="NI DAQ.lvlib" Type="Library" URL="../../NI_DAQ/Libraries/NI DAQ/NI DAQ.lvlib"/>
 		</Item>
 		<Item Name="Project Documentation" Type="Folder">
-			<Property Name="NI.SortType" Type="Int">3</Property>
 			<Item Name="Documentation Images" Type="Folder">
-				<Property Name="NI.SortType" Type="Int">0</Property>
 				<Item Name="loc_access_task_data.png" Type="Document" URL="../documentation/loc_access_task_data.png"/>
 				<Item Name="loc_bundle_new_button_ref.png" Type="Document" URL="../documentation/loc_bundle_new_button_ref.png"/>
 				<Item Name="loc_convert_variant.png" Type="Document" URL="../documentation/loc_convert_variant.png"/>
@@ -59,7 +58,18 @@
 			<Item Name="Queued Message Handler Documentation.html" Type="Document" URL="../documentation/Queued Message Handler Documentation.html"/>
 		</Item>
 		<Item Name="Support VIs" Type="Folder">
-			<Property Name="NI.SortType" Type="Int">3</Property>
+			<Item Name="Type Definitions" Type="Folder">
+				<Item Name="Config states ---typedef.ctl" Type="VI" URL="../controls/Config states ---typedef.ctl"/>
+				<Item Name="Continuous acquisition ---argument.ctl" Type="VI" URL="../controls/Continuous acquisition ---argument.ctl"/>
+				<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../Controls/Motor controls---typedef.ctl"/>
+				<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
+				<Item Name="Motor FGV states ---typedef.ctl" Type="VI" URL="../controls/Motor FGV states ---typedef.ctl"/>
+				<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
+				<Item Name="Move params ---typedef.ctl" Type="VI" URL="../controls/Move params ---typedef.ctl"/>
+				<Item Name="Paused acquisition ---argument.ctl" Type="VI" URL="../controls/Paused acquisition ---argument.ctl"/>
+				<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
+				<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
+			</Item>
 			<Item Name="Message Queue.lvlib" Type="Library" URL="../support/Message Queue/Message Queue.lvlib"/>
 			<Item Name="User Events.lvlib" Type="Library" URL="../support/User Event - Stop/User Events.lvlib"/>
 			<Item Name="Check Loop Error.vi" Type="VI" URL="../support/Check Loop Error.vi"/>
@@ -86,18 +96,7 @@
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
 		</Item>
-		<Item Name="Type Definitions" Type="Folder">
-			<Item Name="Config states ---typedef.ctl" Type="VI" URL="../controls/Config states ---typedef.ctl"/>
-			<Item Name="Continuous acquisition ---argument.ctl" Type="VI" URL="../controls/Continuous acquisition ---argument.ctl"/>
-			<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../Controls/Motor controls---typedef.ctl"/>
-			<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
-			<Item Name="Motor FGV states ---typedef.ctl" Type="VI" URL="../controls/Motor FGV states ---typedef.ctl"/>
-			<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
-			<Item Name="Move params ---typedef.ctl" Type="VI" URL="../controls/Move params ---typedef.ctl"/>
-			<Item Name="Paused acquisition ---argument.ctl" Type="VI" URL="../controls/Paused acquisition ---argument.ctl"/>
-			<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
-			<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
-		</Item>
+		<Item Name="Get Endstop state.vi" Type="VI" URL="../support/Get Endstop state.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
@@ -107,23 +106,26 @@
 				<Property Name="App_INI_GUID" Type="Str">{F8BAE070-8383-465E-800B-3DF9D752A65B}</Property>
 				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
 				<Property Name="App_serverType" Type="Int">1</Property>
-				<Property Name="Bld_buildCacheID" Type="Str">{96FCFFEE-92FF-41D7-8A5C-2E1B7D4F08B1}</Property>
+				<Property Name="Bld_buildCacheID" Type="Str">{3F582E76-1917-45B0-9855-8098A1365EB6}</Property>
 				<Property Name="Bld_buildSpecName" Type="Str">Main Application</Property>
 				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
 				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
-				<Property Name="Bld_localDestDir" Type="Path">../builds/NI_AB_PROJECTNAME/Main Application</Property>
+				<Property Name="Bld_excludeTypedefs" Type="Bool">true</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../Main Application</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
-				<Property Name="Bld_previewCacheID" Type="Str">{9236DFC5-A1BE-45C5-93F4-A12737594CB8}</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{22AFC4A5-8042-436F-BEC5-B5DD909C3395}</Property>
+				<Property Name="Bld_targetDestDir" Type="Path"></Property>
 				<Property Name="Bld_version.major" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">Main.exe</Property>
-				<Property Name="Destination[0].path" Type="Path">../builds/NI_AB_PROJECTNAME/Main Application/Main.exe</Property>
-				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
+				<Property Name="Destination[0].path" Type="Path">../Main Application/Main.exe</Property>
 				<Property Name="Destination[0].type" Type="Str">App</Property>
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
-				<Property Name="Destination[1].path" Type="Path">../builds/NI_AB_PROJECTNAME/Main Application/data</Property>
-				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Source[0].itemID" Type="Str">{E7BFF366-DAB8-43B4-AA23-0662F14B8EC9}</Property>
+				<Property Name="Destination[1].path" Type="Path">../Main Application/data</Property>
+				<Property Name="Destination[2].destName" Type="Str">Destination Directory</Property>
+				<Property Name="Destination[2].path" Type="Path">../Main Application</Property>
+				<Property Name="DestinationCount" Type="Int">3</Property>
+				<Property Name="Source[0].itemID" Type="Str">{BC22652C-00F7-4CC0-B8EC-62573DD205B9}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main.vi</Property>
