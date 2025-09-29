@@ -92,11 +92,12 @@
 			<Item Name="Get current position.vi" Type="VI" URL="../support/Get current position.vi"/>
 			<Item Name="Move and wait.vi" Type="VI" URL="../support/Move and wait.vi"/>
 			<Item Name="Send stop routine.vi" Type="VI" URL="../support/Send stop routine.vi"/>
+			<Item Name="Get Endstop state.vi" Type="VI" URL="../support/Get Endstop state.vi"/>
+			<Item Name="Write DO with model.vi" Type="VI" URL="../support/Write DO with model.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
 		</Item>
-		<Item Name="Get Endstop state.vi" Type="VI" URL="../support/Get Endstop state.vi"/>
 		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 		<Item Name="Dependencies" Type="Dependencies"/>
 		<Item Name="Build Specifications" Type="Build">
