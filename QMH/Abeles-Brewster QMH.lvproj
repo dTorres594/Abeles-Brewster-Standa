@@ -26,6 +26,7 @@
 		<Item Name="Controls" Type="Folder">
 			<Item Name="CCW button.ctl" Type="VI" URL="../../Public/Controls/CCW button.ctl"/>
 			<Item Name="CW button.ctl" Type="VI" URL="../../Public/Controls/CW button.ctl"/>
+			<Item Name="Position arguments ---typedef.ctl" Type="VI" URL="../controls/Position arguments ---typedef.ctl"/>
 		</Item>
 		<Item Name="DQMH Modules" Type="Folder">
 			<Item Name="NI DAQ.lvlib" Type="Library" URL="../../NI_DAQ/Libraries/NI DAQ/NI DAQ.lvlib"/>
@@ -69,6 +70,7 @@
 				<Item Name="Paused acquisition ---argument.ctl" Type="VI" URL="../controls/Paused acquisition ---argument.ctl"/>
 				<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
 				<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
+				<Item Name="Move to zero ---argument.ctl" Type="VI" URL="../controls/Move to zero ---argument.ctl"/>
 			</Item>
 			<Item Name="Message Queue.lvlib" Type="Library" URL="../support/Message Queue/Message Queue.lvlib"/>
 			<Item Name="User Events.lvlib" Type="Library" URL="../support/User Event - Stop/User Events.lvlib"/>
@@ -95,6 +97,10 @@
 			<Item Name="Get Endstop state.vi" Type="VI" URL="../support/Get Endstop state.vi"/>
 			<Item Name="Write DO with model.vi" Type="VI" URL="../support/Write DO with model.vi"/>
 			<Item Name="Update signal cluster array.vi" Type="VI" URL="../support/Update signal cluster array.vi"/>
+			<Item Name="Save zero position.vi" Type="VI" URL="../support/Save zero position.vi"/>
+			<Item Name="Load zero position.vi" Type="VI" URL="../support/Load zero position.vi"/>
+			<Item Name="Get zero move.vi" Type="VI" URL="../support/Get zero move.vi"/>
+			<Item Name="Update moving conditions.vi" Type="VI" URL="../support/Update moving conditions.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
