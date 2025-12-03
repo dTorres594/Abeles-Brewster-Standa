@@ -27,6 +27,8 @@
 			<Item Name="CCW button.ctl" Type="VI" URL="../../Public/Controls/CCW button.ctl"/>
 			<Item Name="CW button.ctl" Type="VI" URL="../../Public/Controls/CW button.ctl"/>
 			<Item Name="Position arguments ---typedef.ctl" Type="VI" URL="../controls/Position arguments ---typedef.ctl"/>
+			<Item Name="Timed acqn params ---typedef.ctl" Type="VI" URL="../controls/Timed acqn params ---typedef.ctl"/>
+			<Item Name="Timer AE states ---typedef.ctl" Type="VI" URL="../controls/Timer AE states ---typedef.ctl"/>
 		</Item>
 		<Item Name="DQMH Modules" Type="Folder">
 			<Item Name="NI DAQ.lvlib" Type="Library" URL="../../NI_DAQ/Libraries/NI DAQ/NI DAQ.lvlib"/>
@@ -101,6 +103,9 @@
 			<Item Name="Load zero position.vi" Type="VI" URL="../support/Load zero position.vi"/>
 			<Item Name="Get zero move.vi" Type="VI" URL="../support/Get zero move.vi"/>
 			<Item Name="Update moving conditions.vi" Type="VI" URL="../support/Update moving conditions.vi"/>
+			<Item Name="Send stop motors events.vi" Type="VI" URL="../support/Send stop motors events.vi"/>
+			<Item Name="Timer Action Engine.vi" Type="VI" URL="../support/Timer Action Engine.vi"/>
+			<Item Name="Finish timed acq.vi" Type="VI" URL="../support/Finish timed acq.vi"/>
 		</Item>
 		<Item Name="Testers" Type="Folder">
 			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
