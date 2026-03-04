@@ -1,0 +1,39 @@
+== Modules overview
+
+This project contains 0 singleton module and 1 cloneable module.
+
+.Modules list
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Singleton |Cloneable
+
+|
+|<<NI DAQ.lvlib>>
+|===
+
+This graph represents the links between all DQMH modules.
+
+[graphviz, format="png", align="center"]
+....
+digraph G_A3C4F3FC75F9487694321B7D6514F008 {
+rankdir=LR;
+edge[dir=none color=aliceblue  arrowhead=box arrowtail=box style=filled penwidth=1 fontcolor=black fontsize=12]
+node[color=black shape=box fontcolor=black fontsize=12]
+"Configure DAQ"[label="Configure DAQ" color=skyblue shape=note fontcolor=black fontsize=12]
+"Get current position"[label="Get current position" color=skyblue shape=note fontcolor=black fontsize=12]
+"Main"[label="Main" color=skyblue shape=note fontcolor=black fontsize=12]
+"Move and wait"[label="Move and wait" color=skyblue shape=note fontcolor=black fontsize=12]
+"Move single motor"[label="Move single motor" color=skyblue shape=note fontcolor=black fontsize=12]
+"NI DAQ"[label="NI DAQ" color=black shape=component fontcolor=black fontsize=12]
+"Start tasks"[label="Start tasks" color=skyblue shape=note fontcolor=black fontsize=12]
+"Validate DAQ model"[label="Validate DAQ model" color=skyblue shape=note fontcolor=black fontsize=12]
+"Configure DAQ" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=none style=filled penwidth=1 fontcolor=black fontsize=12];
+"Main" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+"Move and wait" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+"Validate DAQ model" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+"Start tasks" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=none style=filled penwidth=1 fontcolor=black fontsize=12];
+"Move single motor" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=none style=filled penwidth=1 fontcolor=black fontsize=12];
+"NI DAQ" -> "Main" [label=" " dir=both color=goldenrod  arrowhead=normal arrowtail=none style=dashed penwidth=1 fontcolor=black fontsize=12];
+"Get current position" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+}
+....

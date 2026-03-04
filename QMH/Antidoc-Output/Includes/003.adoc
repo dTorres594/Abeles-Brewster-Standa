@@ -1,0 +1,554 @@
+== NI DAQ.lvlib
+
+*Type:* Cloneable
+
+*Responsibility:*
+Management of connection, aquisition and signal generation from NI DAQ devices.
+
+=== Module relationship
+
+[graphviz, format="png", align="center"]
+....
+digraph G_1F5C21E3B1784EED8DC600A7E5409519 {
+rankdir=LR;
+edge[dir=none color=aliceblue  arrowhead=box arrowtail=box style=filled penwidth=1 fontcolor=black fontsize=12]
+node[color=black shape=box fontcolor=black fontsize=12]
+"Configure DAQ"[label="Configure DAQ" color=skyblue shape=note fontcolor=black fontsize=12]
+"Get current position"[label="Get current position" color=skyblue shape=note fontcolor=black fontsize=12]
+"Main"[label="Main" color=skyblue shape=note fontcolor=black fontsize=12]
+"Move and wait"[label="Move and wait" color=skyblue shape=note fontcolor=black fontsize=12]
+"Move single motor"[label="Move single motor" color=skyblue shape=note fontcolor=black fontsize=12]
+"NI DAQ"[label="NI DAQ" color=slateblue shape=component fontcolor=black fontsize=12]
+"Start tasks"[label="Start tasks" color=skyblue shape=note fontcolor=black fontsize=12]
+"Validate DAQ model"[label="Validate DAQ model" color=skyblue shape=note fontcolor=black fontsize=12]
+"Configure DAQ" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=none style=filled penwidth=1 fontcolor=black fontsize=12];
+"Main" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+"Move and wait" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+"Validate DAQ model" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+"Start tasks" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=none style=filled penwidth=1 fontcolor=black fontsize=12];
+"Move single motor" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=none style=filled penwidth=1 fontcolor=black fontsize=12];
+"NI DAQ" -> "Main" [label=" " dir=both color=goldenrod  arrowhead=normal arrowtail=none style=dashed penwidth=1 fontcolor=black fontsize=12];
+"Get current position" -> "NI DAQ" [label="    " dir=both color=forestgreen  arrowhead=normal arrowtail=vee style=filled penwidth=1 fontcolor=black fontsize=12];
+}
+....
+
+.Requests callers
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Request Name |Callers
+
+|Create AI channel
+|Configure DAQ.vi
+
+|Create AO channel
+|Configure DAQ.vi
+
+|Create CI channel
+|Configure DAQ.vi
+
+|Create DI channel
+|Configure DAQ.vi
+
+|Create DO channel
+|Configure DAQ.vi
+
+|Get channel list
+|
+
+|Get device model
+|Validate DAQ model.vi
+
+|Get device name
+|Main.vi
+
+|Get task ref
+|
+
+|Hide Panel
+|
+
+|Read AI
+|Main.vi
+
+|Read CI
+|Get current position.vi +
+Main.vi +
+Move and wait.vi
+
+|Read DI
+|
+
+|Set device name
+|Main.vi +
+Validate DAQ model.vi
+
+|Show Diagram
+|
+
+|Show Panel
+|
+
+|Sleep HL
+|
+
+|Start continous acquisition
+|Start tasks.vi
+
+|Start task
+|Main.vi +
+Move and wait.vi +
+Start tasks.vi
+
+|Stop continuous acquisition
+|Main.vi
+
+|Stop task
+|Main.vi +
+Move and wait.vi
+
+|Validate connection
+|Main.vi
+
+|Wake up HL
+|
+
+|Write AO
+|Main.vi +
+Start tasks.vi
+
+|Write DO
+|Main.vi +
+Move and wait.vi +
+Move single motor.vi +
+Start tasks.vi
+|===
+
+.Broadcasts Listeners
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Broadcast Name |Listeners
+
+|Analog data acquired
+|
+
+|Connection failed
+|Main.vi
+
+|Counter data acquired
+|
+
+|Device connected
+|Main.vi
+
+|Digital data acquired
+|Main.vi
+
+|Error Reported
+|
+
+|Module Did Init
+|Main.vi
+
+|Module Did Stop
+|
+
+|Status Updated
+|
+
+|Update Module Execution Status
+|
+|===
+
+.Used requests
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Module |Requests
+
+|--
+|--
+|===
+
+.Registered broadcast
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Module |Broadcasts
+
+|--
+|--
+|===
+
+=== Event list
+
+[NOTE]
+====
+The <<dqmh-default-events,default events>> are not listed.
+====
+
+.Events
+[cols="<.<4d,^.<1a,^.<8a,<.<12d,^.<1a,^.<1a,<.<1a", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Type |Connector pane |Description |S. |R. |I.
+
+|Set device name
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Set_device_name.vi.png[NI DAQ.lvlib:Set device name.vi]
+|Set the device identifier to be managed internally by the module.
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Get channel list
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Get_channel_list.vi.png[NI DAQ.lvlib:Get channel list.vi]
+|Request to read all available channels from the specified device.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Start task
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Start_task.vi.png[NI DAQ.lvlib:Start task.vi]
+|Request to start all existing channels for the local task.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Stop task
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Stop_task.vi.png[NI DAQ.lvlib:Stop task.vi]
+|Request to stop all channels within the local task.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Write DO
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Write_DO.vi.png[NI DAQ.lvlib:Write DO.vi]
+|Request to write to a single or multiple digital output channels.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Create DI channel
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Create_DI_channel.vi.png[NI DAQ.lvlib:Create DI channel.vi]
+|Request to create a digital input channel(s).
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Read DI
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Read_DI.vi.png[NI DAQ.lvlib:Read DI.vi]
+|Request to read one or multiple digital inputs.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Get task ref
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Get_task_ref.vi.png[NI DAQ.lvlib:Get task ref.vi]
+|Request to get a reference to a given task.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Wake up HL
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Wake_up_HL.vi.png[NI DAQ.lvlib:Wake up HL.vi]
+|Request to wake the helper loop to continuously read\acquire from the specified task at a rate detemined by the timeout. Returns data as a variant.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Sleep HL
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Sleep_HL.vi.png[NI DAQ.lvlib:Sleep HL.vi]
+|Request to stop the helper loop and continuous acquisition.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Create AI channel
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Create_AI_channel.vi.png[NI DAQ.lvlib:Create AI channel.vi]
+|Request to create an analog input channel in the selected channel.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Read AI
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Read_AI.vi.png[NI DAQ.lvlib:Read AI.vi]
+|Request to read single or multiple analog inputs.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Create AO channel
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Create_AO_channel.vi.png[NI DAQ.lvlib:Create AO channel.vi]
+|Request to create single or multiple analog output channel (s).
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Write AO
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Write_AO.vi.png[NI DAQ.lvlib:Write AO.vi]
+|Request to write a value to a single or multiple channel (s)
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Validate connection
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Validate_connection.vi.png[NI DAQ.lvlib:Validate connection.vi]
+|Request to validate correct connection to device. Call after the Set device ID event.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Start continous acquisition
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Start_continous_acquisition.vi.png[NI DAQ.lvlib:Start continous acquisition.vi]
+|Request to acquire continuously from DAQ device with a predefined Timeout period.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Stop continuous acquisition
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Stop_continuous_acquisition.vi.png[NI DAQ.lvlib:Stop continuous acquisition.vi]
+|Request to stop continous acquisition made by the HL.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Create DO channel
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Create_DO_channel.vi.png[NI DAQ.lvlib:Create DO channel.vi]
+|Creates a new digital output with a single or multiple channels.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Create CI channel
+|image:request.png[request.png]
+|image:NI_DAQ.lvlib_Create_CI_channel.vi.png[NI DAQ.lvlib:Create CI channel.vi]
+|Request to create a counter input channel.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Read CI
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Read_CI.vi.png[NI DAQ.lvlib:Read CI.vi]
+|Request to read the number of pulses of CI channels.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Get device model
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Get_device_model.vi.png[NI DAQ.lvlib:Get device model.vi]
+|Request to get the model of the device.
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Get device name
+|image:request-and-wait-for-reply.png[request-and-wait-for-reply.png]
+|image:NI_DAQ.lvlib_Get_device_name.vi.png[NI DAQ.lvlib:Get device name.vi]
+|Request to return the name of the device name set to the module.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Digital data acquired
+|image:broadcast.png[broadcast.png]
+|image:NI_DAQ.lvlib_Digital_data_acquired.vi.png[NI DAQ.lvlib:Digital data acquired.vi]
+|**Note**: This VI was renamed by the DQMH Rename Event utility. Make sure the VI Description is updated to reflect the new event name, then delete this comment.
+
+Broadcasts data aqcuired from a digital or analog channel.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Device connected
+|image:broadcast.png[broadcast.png]
+|image:NI_DAQ.lvlib_Device_connected.vi.png[NI DAQ.lvlib:Device connected.vi]
+|Broadcasts wheneven connection to a DAQ device has been achieved successfuly.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Connection failed
+|image:broadcast.png[broadcast.png]
+|image:NI_DAQ.lvlib_Connection_failed.vi.png[NI DAQ.lvlib:Connection failed.vi]
+|Broadcasts wheneven an unsuccessful attempo to connect has been made.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Analog data acquired
+|image:broadcast.png[broadcast.png]
+|image:NI_DAQ.lvlib_Analog_data_acquired.vi.png[NI DAQ.lvlib:Analog data acquired.vi]
+|Broadcasts data from an AI task.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+
+|Counter data acquired
+|image:broadcast.png[broadcast.png]
+|image:NI_DAQ.lvlib_Counter_data_acquired.vi.png[NI DAQ.lvlib:Counter data acquired.vi]
+|Reports whenever the input counters have information available.
+
+|image:empty.png[empty.png]
+|image:reentrancy-shared.png[reentrancy-shared.png]
+|image:empty.png[empty.png]
+|===
+
+**Type**: image:request.png[] -> Request | image:request-and-wait-for-reply.png[] -> Request and Wait for Reply  | image:broadcast.png[] -> Broadcast
+
+**S**cope: image:scope-protected.png[] -> Protected | image:scope-community.png[] -> Community
+
+**R**eentrancy: image:reentrancy-preallocated.png[] -> Preallocated reentrancy | image:reentrancy-shared.png[] -> Shared reentrancy
+
+**I**nlining: image:inlined.png[] -> Inlined
+
+=== Module Start/Stop calls
+
+[graphviz, format="png", align="center"]
+....
+digraph G_3066137A08C047D9B4B01E6ACB3B9C85 {
+rankdir=LR;
+edge[dir=none color=aliceblue  arrowhead=box arrowtail=box style=filled penwidth=1 fontcolor=black fontsize=12]
+node[color=black shape=box fontcolor=black fontsize=12]
+"576DFDB8-4F28-447E-8FC9-600B5F12B3C1"[label="Start Module" color=yellowgreen shape=note fontcolor=black fontsize=12]
+"5965E2FA-B86F-42A6-8FA3-2C111088615D"[label="Main" color=skyblue shape=note fontcolor=black fontsize=12]
+"B52B10CE-5C0C-481E-8DF8-FB73FEC780E2"[label="Main" color=skyblue shape=note fontcolor=black fontsize=12]
+"BD958B10-EAD3-4B75-A7C3-753616123634"[label="Stop Module" color=tomato shape=note fontcolor=black fontsize=12]
+"576DFDB8-4F28-447E-8FC9-600B5F12B3C1" -> "5965E2FA-B86F-42A6-8FA3-2C111088615D" [dir=both color=yellowgreen  arrowhead=odot arrowtail=inv style=filled penwidth=1 fontcolor=black fontsize=12];
+"BD958B10-EAD3-4B75-A7C3-753616123634" -> "B52B10CE-5C0C-481E-8DF8-FB73FEC780E2" [dir=both color=tomato  arrowhead=odot arrowtail=inv style=dotted penwidth=1 fontcolor=black fontsize=12];
+}
+....
+
+.Start and Stop module callers
+[cols="", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Function |Callers
+
+|Start Module
+|Main.vi
+
+|Stop Module
+|Main.vi
+|===
+
+=== Module Helper Loops
+
+.Helper Loops Found
+[cols="<.<4d,<.<2d,<.<10d", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Helper Loop Type |Events Handled
+
+|No Subdiagram Label
+|Custom
+| Timeout 
+
+ User events.Wake HL
+
+ User events.Sleep HL
+
+ NI DAQ Request Events.Stop Module
+
+
+|===
+
+=== Module custom errors
+
+[TIP]
+====
+Custom errors are added to the module via vi named `*--error.vi`.
+====
+
+Module NI DAQ.lvlib use the following custom errors:
+
+.Custom errors
+[cols="<.<4d,<.<2d,<.<10d", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|Name |Code |Description
+
+|Module Running as Singleton
+|403680
+|The "%s" module is currently running as singleton, but the Start Module VI was called with 'Run as Singleton' specified as FALSE.
+
+|Module Not Stopped
+|403682
+|The Stop Module VI for the %s module timed out while waiting for the module main VI to stop. The module main VI may still be running.
+
+|Module Not Synced
+|403683
+|%s Module was unable to synchronize events.
+
+|Module Not Running
+|403684
+|Not a single instance of "%s" Module running.
+
+|Module Running as Cloneable
+|403685
+|The "%s" module is currently running as cloneable, but the Start Module VI was called with 'Run as Singleton' specified as TRUE.
+
+|Request and Wait for Reply Timeout
+|403686
+|%s
+
+|Master Reference Not Closed
+|403687
+|The "%s" module cannot be run as singleton because the Master Reference is still open from a prior run as cloneable. If you plan on running this module as both singleton and cloneable, consider changing your Main VI to wire a value of TRUE to the 'Close Master Reference' input of Init Module.vi.
+|===
+
+=== Module Constant VIs
+
+.Constant VIs Found
+[cols="<.<3d,<.<3d,<.<6d", %autowidth, frame=all, grid=all, stripes=none]
+|===
+|VI Name |Data Type |Value
+
+|Module Name--constant.vi
+|["String","String"]
+|[" %d","NI DAQ"]
+
+|Module Timeout--constant.vi
+|I32
+|5000
+
+|Channel list header ---constant.vi
+|Array
+|# Dimentions: (1) - Data Type: (String)
+|===

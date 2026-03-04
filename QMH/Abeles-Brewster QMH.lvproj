@@ -1,0 +1,157 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<Project Type="Project" LVVersion="20008000">
+	<Property Name="NI.LV.All.SaveVersion" Type="Str">20.0</Property>
+	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
+	<Property Name="NI.Project.Description" Type="Str"></Property>
+	<Property Name="SMProvider.SMVersion" Type="Int">201310</Property>
+	<Item Name="My Computer" Type="My Computer">
+		<Property Name="IOScan.Faults" Type="Str"></Property>
+		<Property Name="IOScan.NetVarPeriod" Type="UInt">100</Property>
+		<Property Name="IOScan.NetWatchdogEnabled" Type="Bool">false</Property>
+		<Property Name="IOScan.Period" Type="UInt">10000</Property>
+		<Property Name="IOScan.PowerupMode" Type="UInt">0</Property>
+		<Property Name="IOScan.Priority" Type="UInt">9</Property>
+		<Property Name="IOScan.ReportModeConflict" Type="Bool">true</Property>
+		<Property Name="IOScan.StartEngineOnDeploy" Type="Bool">false</Property>
+		<Property Name="NI.SortType" Type="Int">3</Property>
+		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
+		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
+		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
+		<Property Name="server.tcp.port" Type="Int">0</Property>
+		<Property Name="server.tcp.serviceName" Type="Str">My Computer/VI Server</Property>
+		<Property Name="server.tcp.serviceName.default" Type="Str">My Computer/VI Server</Property>
+		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
+		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
+		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="Controls" Type="Folder">
+			<Item Name="CCW button.ctl" Type="VI" URL="../../Public/Controls/CCW button.ctl"/>
+			<Item Name="CW button.ctl" Type="VI" URL="../../Public/Controls/CW button.ctl"/>
+			<Item Name="Position arguments ---typedef.ctl" Type="VI" URL="../controls/Position arguments ---typedef.ctl"/>
+			<Item Name="Timed acqn params ---typedef.ctl" Type="VI" URL="../controls/Timed acqn params ---typedef.ctl"/>
+			<Item Name="Timer AE states ---typedef.ctl" Type="VI" URL="../controls/Timer AE states ---typedef.ctl"/>
+		</Item>
+		<Item Name="DQMH Modules" Type="Folder">
+			<Item Name="NI DAQ.lvlib" Type="Library" URL="../../NI_DAQ/Libraries/NI DAQ/NI DAQ.lvlib"/>
+		</Item>
+		<Item Name="Project Documentation" Type="Folder">
+			<Item Name="Documentation Images" Type="Folder">
+				<Item Name="loc_access_task_data.png" Type="Document" URL="../documentation/loc_access_task_data.png"/>
+				<Item Name="loc_bundle_new_button_ref.png" Type="Document" URL="../documentation/loc_bundle_new_button_ref.png"/>
+				<Item Name="loc_convert_variant.png" Type="Document" URL="../documentation/loc_convert_variant.png"/>
+				<Item Name="loc_create_two_queues.png" Type="Document" URL="../documentation/loc_create_two_queues.png"/>
+				<Item Name="loc_disable_new_button.png" Type="Document" URL="../documentation/loc_disable_new_button.png"/>
+				<Item Name="loc_enqueue_generic_message.png" Type="Document" URL="../documentation/loc_enqueue_generic_message.png"/>
+				<Item Name="loc_enqueue_message_with_data.png" Type="Document" URL="../documentation/loc_enqueue_message_with_data.png"/>
+				<Item Name="loc_enqueue_priority_message.png" Type="Document" URL="../documentation/loc_enqueue_priority_message.png"/>
+				<Item Name="loc_exit_message.png" Type="Document" URL="../documentation/loc_exit_message.png"/>
+				<Item Name="loc_message_queue_wire.png" Type="Document" URL="../documentation/loc_message_queue_wire.png"/>
+				<Item Name="loc_new_message_diagram.png" Type="Document" URL="../documentation/loc_new_message_diagram.png"/>
+				<Item Name="loc_new_task_loop.png" Type="Document" URL="../documentation/loc_new_task_loop.png"/>
+				<Item Name="loc_new_task_typedef.png" Type="Document" URL="../documentation/loc_new_task_typedef.png"/>
+				<Item Name="loc_open_msg_queue_typedef.png" Type="Document" URL="../documentation/loc_open_msg_queue_typedef.png"/>
+				<Item Name="loc_qmh_ignore_errors.png" Type="Document" URL="../documentation/loc_qmh_ignore_errors.png"/>
+				<Item Name="loc_queued_message_handler.gif" Type="Document" URL="../documentation/loc_queued_message_handler.gif"/>
+				<Item Name="loc_stop_new_mhl.png" Type="Document" URL="../documentation/loc_stop_new_mhl.png"/>
+				<Item Name="loc_stop_task.png" Type="Document" URL="../documentation/loc_stop_task.png"/>
+				<Item Name="loc_ui_data.png" Type="Document" URL="../documentation/loc_ui_data.png"/>
+				<Item Name="loc_value_change_event.png" Type="Document" URL="../documentation/loc_value_change_event.png"/>
+				<Item Name="noloc_note.png" Type="Document" URL="../documentation/noloc_note.png"/>
+				<Item Name="noloc_tip.png" Type="Document" URL="../documentation/noloc_tip.png"/>
+			</Item>
+			<Item Name="Queued Message Handler Documentation.html" Type="Document" URL="../documentation/Queued Message Handler Documentation.html"/>
+		</Item>
+		<Item Name="Support VIs" Type="Folder">
+			<Item Name="Type Definitions" Type="Folder">
+				<Item Name="Config states ---typedef.ctl" Type="VI" URL="../controls/Config states ---typedef.ctl"/>
+				<Item Name="Continuous acquisition ---argument.ctl" Type="VI" URL="../controls/Continuous acquisition ---argument.ctl"/>
+				<Item Name="Motor controls---typedef.ctl" Type="VI" URL="../../Controls/Motor controls---typedef.ctl"/>
+				<Item Name="Motor direction ---typedef.ctl" Type="VI" URL="../controls/Motor direction ---typedef.ctl"/>
+				<Item Name="Motor FGV states ---typedef.ctl" Type="VI" URL="../controls/Motor FGV states ---typedef.ctl"/>
+				<Item Name="Motor params ---typedef.ctl" Type="VI" URL="../controls/Motor params ---typedef.ctl"/>
+				<Item Name="Move params ---typedef.ctl" Type="VI" URL="../controls/Move params ---typedef.ctl"/>
+				<Item Name="Paused acquisition ---argument.ctl" Type="VI" URL="../controls/Paused acquisition ---argument.ctl"/>
+				<Item Name="UI Data.ctl" Type="VI" URL="../controls/UI Data.ctl"/>
+				<Item Name="User Events ---typedef.ctl" Type="VI" URL="../controls/User Events ---typedef.ctl"/>
+				<Item Name="Move to zero ---argument.ctl" Type="VI" URL="../controls/Move to zero ---argument.ctl"/>
+			</Item>
+			<Item Name="Message Queue.lvlib" Type="Library" URL="../support/Message Queue/Message Queue.lvlib"/>
+			<Item Name="User Events.lvlib" Type="Library" URL="../support/User Event - Stop/User Events.lvlib"/>
+			<Item Name="Check Loop Error.vi" Type="VI" URL="../support/Check Loop Error.vi"/>
+			<Item Name="Error Handler - Event Handling Loop.vi" Type="VI" URL="../support/Error Handler - Event Handling Loop.vi"/>
+			<Item Name="Error Handler - Message Handling Loop.vi" Type="VI" URL="../support/Error Handler - Message Handling Loop.vi"/>
+			<Item Name="Configure DAQ.vi" Type="VI" URL="../support/Configure DAQ.vi"/>
+			<Item Name="Load config.vi" Type="VI" URL="../support/Load config.vi"/>
+			<Item Name="Config filepath ---constant.vi" Type="VI" URL="../support/Config filepath ---constant.vi"/>
+			<Item Name="Config dialog.vi" Type="VI" URL="../support/Config dialog.vi"/>
+			<Item Name="Validate DAQ model.vi" Type="VI" URL="../support/Validate DAQ model.vi"/>
+			<Item Name="Save config.vi" Type="VI" URL="../support/Save config.vi"/>
+			<Item Name="Start tasks.vi" Type="VI" URL="../support/Start tasks.vi"/>
+			<Item Name="Move single motor.vi" Type="VI" URL="../support/Move single motor.vi"/>
+			<Item Name="Move both motors.vi" Type="VI" URL="../support/Move both motors.vi"/>
+			<Item Name="Update position.vi" Type="VI" URL="../support/Update position.vi"/>
+			<Item Name="Motors FGV.vi" Type="VI" URL="../support/Motors FGV.vi"/>
+			<Item Name="Update DO status.vi" Type="VI" URL="../support/Update DO status.vi"/>
+			<Item Name="Create file reference.vi" Type="VI" URL="../support/Create file reference.vi"/>
+			<Item Name="continous to paused.vi" Type="VI" URL="../support/continous to paused.vi"/>
+			<Item Name="Get current position.vi" Type="VI" URL="../support/Get current position.vi"/>
+			<Item Name="Move and wait.vi" Type="VI" URL="../support/Move and wait.vi"/>
+			<Item Name="Send stop routine.vi" Type="VI" URL="../support/Send stop routine.vi"/>
+			<Item Name="Get Endstop state.vi" Type="VI" URL="../support/Get Endstop state.vi"/>
+			<Item Name="Write DO with model.vi" Type="VI" URL="../support/Write DO with model.vi"/>
+			<Item Name="Update signal cluster array.vi" Type="VI" URL="../support/Update signal cluster array.vi"/>
+			<Item Name="Save zero position.vi" Type="VI" URL="../support/Save zero position.vi"/>
+			<Item Name="Load zero position.vi" Type="VI" URL="../support/Load zero position.vi"/>
+			<Item Name="Get zero move.vi" Type="VI" URL="../support/Get zero move.vi"/>
+			<Item Name="Update moving conditions.vi" Type="VI" URL="../support/Update moving conditions.vi"/>
+			<Item Name="Send stop motors events.vi" Type="VI" URL="../support/Send stop motors events.vi"/>
+			<Item Name="Timer Action Engine.vi" Type="VI" URL="../support/Timer Action Engine.vi"/>
+			<Item Name="Finish timed acq.vi" Type="VI" URL="../support/Finish timed acq.vi"/>
+		</Item>
+		<Item Name="Testers" Type="Folder">
+			<Item Name="Test NI DAQ API.vi" Type="VI" URL="../../NI_DAQ/Libraries/NI DAQ/Test NI DAQ API.vi"/>
+		</Item>
+		<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
+		<Item Name="Dependencies" Type="Dependencies"/>
+		<Item Name="Build Specifications" Type="Build">
+			<Item Name="Main Application" Type="EXE">
+				<Property Name="App_copyErrors" Type="Bool">true</Property>
+				<Property Name="App_INI_aliasGUID" Type="Str">{51D186D8-2FD9-4F4B-8F36-40D68E57FFBC}</Property>
+				<Property Name="App_INI_GUID" Type="Str">{F8BAE070-8383-465E-800B-3DF9D752A65B}</Property>
+				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
+				<Property Name="App_serverType" Type="Int">1</Property>
+				<Property Name="Bld_buildCacheID" Type="Str">{3F582E76-1917-45B0-9855-8098A1365EB6}</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">Main Application</Property>
+				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
+				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
+				<Property Name="Bld_excludeTypedefs" Type="Bool">true</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../Main Application</Property>
+				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
+				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{22AFC4A5-8042-436F-BEC5-B5DD909C3395}</Property>
+				<Property Name="Bld_targetDestDir" Type="Path"></Property>
+				<Property Name="Bld_version.major" Type="Int">1</Property>
+				<Property Name="Destination[0].destName" Type="Str">Main.exe</Property>
+				<Property Name="Destination[0].path" Type="Path">../Main Application/Main.exe</Property>
+				<Property Name="Destination[0].type" Type="Str">App</Property>
+				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
+				<Property Name="Destination[1].path" Type="Path">../Main Application/data</Property>
+				<Property Name="Destination[2].destName" Type="Str">Destination Directory</Property>
+				<Property Name="Destination[2].path" Type="Path">../Main Application</Property>
+				<Property Name="DestinationCount" Type="Int">3</Property>
+				<Property Name="Source[0].itemID" Type="Str">{BC22652C-00F7-4CC0-B8EC-62573DD205B9}</Property>
+				<Property Name="Source[0].type" Type="Str">Container</Property>
+				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main.vi</Property>
+				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
+				<Property Name="Source[1].type" Type="Str">VI</Property>
+				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="TgtF_fileDescription" Type="Str">Main Application</Property>
+				<Property Name="TgtF_internalName" Type="Str">Main Application</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2012 </Property>
+				<Property Name="TgtF_productName" Type="Str">Main Application</Property>
+				<Property Name="TgtF_targetfileGUID" Type="Str">{8D31CF1E-BFEE-4FAB-AC90-991853A95B09}</Property>
+				<Property Name="TgtF_targetfileName" Type="Str">Main.exe</Property>
+			</Item>
+		</Item>
+	</Item>
+</Project>
