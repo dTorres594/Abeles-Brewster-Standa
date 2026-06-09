@@ -9,12 +9,12 @@
 #define X_STEP_PIN 25       // 9
 #define X_DIR_PIN 33        // 8
 #define X_ENABLE_PIN 32     // 7
-#define X_HOME_PIN 19       // 31
+#define X_HOME_PIN 13       // 15
 
 #define Y_STEP_PIN 14       // 12
 #define Y_DIR_PIN 27        // 11
 #define Y_ENABLE_PIN 26     // 10
-#define Y_HOME_PIN 18       // 30
+#define Y_HOME_PIN 12       // 13
 
 // ***NOT USED ANYMORE. KEPT FOR COMPATIBILITY***
 #define SENSOR_1_PIN 36     // 3
@@ -48,11 +48,11 @@ void rutinaHomeSimultanea();
 void barridoAngular(float gradosTotales, float resolucion);
 
 void setup() {
-  Serial.begin(500000);
+  Serial.begin(115200);
 
   // Start ADC at the default I2C address
   Wire.begin(I2C_SDA, I2C_SCL);
-  ads.setGain(GAIN_ONE);
+  ads.setGain(GAIN_TWOTHIRDS);
   ads.begin(0x48);
   
   ledcAttach(LASER_PIN, PWM_FREQ, PWM_RES);
@@ -61,8 +61,8 @@ void setup() {
   analogReadResolution(12);
   analogSetAttenuation(ADC_11db);
 
-  pinMode(X_HOME_PIN, INPUT_PULLUP);
-  pinMode(Y_HOME_PIN, INPUT_PULLUP);
+  pinMode(X_HOME_PIN, INPUT_PULLDOWN);
+  pinMode(Y_HOME_PIN, INPUT_PULLDOWN);
   pinMode(X_ENABLE_PIN, OUTPUT);
   pinMode(Y_ENABLE_PIN, OUTPUT);
   pinMode(X_STEP_PIN, OUTPUT);  // Importante para HardSync
@@ -269,15 +269,15 @@ void barridoAngular(float gradosTotales, float resolucion) {
 
 // Función auxiliar para leer AMBOS sensores durante el barrido
 void leerYEnviarPromedio() {
-  long sum1 = 0;
-  long sum2 = 0;
+  float sum1 = 0;
+  float sum2 = 0;
 
   // Tomamos 10 lecturas rápidas para promediar
   for (int k = 0; k < 10; k++) {
-    adc0 = ads.readADC_SingleEnded(0);
+    adc0 = ads.readADC_SingleEnded(0);  // Type int16_t
     adc1 = ads.readADC_SingleEnded(1);
   
-    volts0 = ads.computeVolts(adc0);
+    volts0 = ads.computeVolts(adc0);    // Type float
     volts1 = ads.computeVolts(adc1);
     
     sum1 += volts0;
@@ -298,8 +298,8 @@ void leerYEnviarPromedio() {
 
 // Función auxiliar para lectura puntual manual
 void leerYReportarSensores() {
-  long sum1 = 0;
-  long sum2 = 0;
+  float sum1 = 0;
+  float sum2 = 0;
 
   for (int i = 0; i < 20; i++) {
     adc0 = ads.readADC_SingleEnded(0);
@@ -332,7 +332,7 @@ void reportarPosicion() {
   Serial.print(",");
   Serial.println(ay, 3);
   Serial.print("HOME:");
-  Serial.print(digitalRead(X_HOME_PIN) == LOW);
+  Serial.print(digitalRead(X_HOME_PIN) == LOW);  // #Diego: Revisar lógica
   Serial.print(",");
   Serial.println(digitalRead(Y_HOME_PIN) == LOW);
 }
