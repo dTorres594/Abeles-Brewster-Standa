@@ -310,7 +310,7 @@ void leerYReportarSensores() {
     
     sum1 += volts0;
     sum2 += volts1;  // Lectura Sensor 2
-    delayMicroseconds(50);
+    delayMicroseconds(50);   // Review delay time
   }
 
   float v1 = sum1 / 20.0;
