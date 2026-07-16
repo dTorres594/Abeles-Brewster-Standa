@@ -2,6 +2,17 @@
 #include <Adafruit_ADS1X15.h>
 #include <Wire.h>
 
+/* Project notes:
+  - Motor resolution is 0.01°/step. It takes 36,000 steps to complete a revolution.
+  - Cruise max speed was set to 600 steps/second. It should take about 60 seconds to 
+  complete a full revolution.
+  - During cruise movement, acceleration is set to 4,000 steps/second^2. Maximum speed
+  shoud be achieved in about 150 ms or 45 steps (0.45°).
+  - When performing a sweep, MotorX moves at half the speed and acceleration for MotorY 
+  is halved as well. This ensures that both motors reach their maximum at speed at about
+  the same time (~150 ms).
+*/
+
 // PINES                    // Physical pin
 #define I2C_SDA 21          // 36
 #define I2C_SCL 22          // 33
@@ -12,7 +23,7 @@
 #define X_HOME_PIN 13       // 15
 
 #define Y_STEP_PIN 14       // 12
-#define Y_DIR_PIN 27        // 11
+#define Y_DIR_PIN 27        // 11 
 #define Y_ENABLE_PIN 26     // 10
 #define Y_HOME_PIN 12       // 13
 
@@ -41,10 +52,10 @@ bool motorY_Activo = false;
 int16_t adc0, adc1;
 float volts0, volts1;
 
-// Pre-declaración
+// Pre-declaración de funciones prototipo
 void reportarPosicion();
 void leerYReportarSensores();
-void rutinaHomeSimultanea();
+void rutinaHomeSimultanea(unsigned int dir);
 void barridoAngular(float gradosTotales, float resolucion);
 
 void setup() {
@@ -127,17 +138,19 @@ void loop() {
       if (pwm < 0) pwm = 0;
       if (pwm > 255) pwm = 255;
       ledcWrite(LASER_PIN, pwm);
-    } else if (cmdChar == 'F') {
-      rutinaHomeSimultanea();
-    } else if (cmdChar == 'M') {
+    } else if (cmdChar == 'F') {        // Send both motors to home
+      unsigned int dir = Serial.parseInt();
+      rutinaHomeSimultanea(dir);
+    } else if (cmdChar == 'M') {        // Move X motor (Theta)
       float gr = Serial.parseFloat();
       long p = (long)(gr / GRADOS_POR_PASO);
       if (p != 0) {
         digitalWrite(X_ENABLE_PIN, LOW);
+        
         delay(2);
         stepperX.move(p);
       }
-    } else if (cmdChar == 'N') {
+    } else if (cmdChar == 'N') {        // Move Y motor (2*Theta)
       float gr = Serial.parseFloat();
       long p = (long)(gr / GRADOS_POR_PASO);
       if (p != 0) {
@@ -145,24 +158,24 @@ void loop() {
         delay(2);
         stepperY.move(p);
       }
-    } else if (cmdChar == 'S') {
+    } else if (cmdChar == 'S') {  // Send stop
       stepperX.stop();
       stepperY.stop();
       Serial.println("ALERTA:PARADA");
-    } else if (cmdChar == 'H') {
+    } else if (cmdChar == 'H') {        // Set current position as Home
       stepperX.setCurrentPosition(0);
       stepperY.setCurrentPosition(0);
       Serial.println("HOME SET");
       reportarPosicion();
-    } else if (cmdChar == 'R') {
+    } else if (cmdChar == 'R') {        // Read sensors
       leerYReportarSensores();
-    } else if (cmdChar == '?') {
+    } else if (cmdChar == '?') {        // Report current position
       reportarPosicion();
     }
 
     while (Serial.available() > 0) Serial.read();
   }
-}
+}  // End of loop
 
 //  BARRIDO ANGULAR DE ALTA VELOCIDAD
 void barridoAngular(float gradosTotales, float resolucion) {
@@ -329,68 +342,94 @@ void reportarPosicion() {
   float ay = stepperY.currentPosition() * GRADOS_POR_PASO;
   Serial.print("POS:");
   Serial.print(ax, 3);
-  Serial.print(",");
-  Serial.println(ay, 3);
+  Serial.print("°,");
+  Serial.print(ay, 3);
+  Serial.println("°");
   Serial.print("HOME:");
-  Serial.print(digitalRead(X_HOME_PIN) == LOW);  // #Diego: Revisar lógica
-  Serial.print(",");
-  Serial.println(digitalRead(Y_HOME_PIN) == LOW);
-}
+  Serial.print(digitalRead(X_HOME_PIN) == HIGH);  // #Diego: Revisar lógica
+  Serial.print("°,");
+  Serial.println(digitalRead(Y_HOME_PIN) == HIGH);
+} // End of reportarPosicion
 
-// Función para ejecutar rutina de enviar a 0° ambos motores de manera simultánea
-void rutinaHomeSimultanea() {
+// Función para ejecutar rutina de enviar a Home ambos motores de manera simultánea
+// Si dir == 1, la dirección de Home es CW; si dir == 2, la dirección es CCW.
+void rutinaHomeSimultanea(unsigned int dir) {
+  long unhome_steps;
+  long max_steps;
+
+  // Unhome for 5°, seek physical home during 360°
+  if (dir == 1){  // Home CW
+    unhome_steps = 500;
+    max_steps = -36000;
+  }
+  else{ // Home CCW
+    unhome_steps = -500;
+    max_steps = 36000;
+  }
+  
   Serial.println("STATUS:HOMING_START");
   digitalWrite(X_ENABLE_PIN, LOW);
   digitalWrite(Y_ENABLE_PIN, LOW);
   delay(100);
-
-  if (digitalRead(X_HOME_PIN) == LOW || digitalRead(Y_HOME_PIN) == LOW) {
-    if (digitalRead(X_HOME_PIN) == LOW) stepperX.move(4000);
-    if (digitalRead(Y_HOME_PIN) == LOW) stepperY.move(4000);
+  
+// Move motors a bit back (in case any is in Home position) --unhome
+  if (digitalRead(X_HOME_PIN) == HIGH || digitalRead(Y_HOME_PIN) == HIGH) {
+    if (digitalRead(X_HOME_PIN) == HIGH) stepperX.move(unhome_steps); // Move both motors relative
+    if (digitalRead(Y_HOME_PIN) == HIGH) stepperY.move(unhome_steps); // to current position
+    
     while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
-      stepperX.run();
-      stepperY.run();
+      stepperX.run();       // Keep polling motor position until target
+      stepperY.run();       // position has been achieved.
     }
   }
-  // FASE 1
-  stepperX.setCurrentPosition(0);
-  stepperY.setCurrentPosition(0);
-  stepperX.move(-36000);
-  stepperY.move(-36000);
-  stepperX.setMaxSpeed(600);
-  stepperY.setMaxSpeed(600);
-  bool xF = false;
-  bool yF = false;
-  int cX = 0;
-  int cY = 0;
-  while (!xF || !yF) {
-    if (Serial.available()) {
-      if (Serial.read() == 'S') return;
-    }  // Paro simple
+
+  delay(100); // Wait for motors to stabilize
+  
+  // Phase 1: Find physical home position
+  bool xF = false;    // Temporary home variables to ensure
+  bool yF = false;    // no false postives are read.
+  int cX = 0;         // Accumulators to validate that ES signal
+  int cY = 0;         // is not a false positive.
+  //stepperX.setCurrentPosition(0);
+  //stepperY.setCurrentPosition(0);
+  stepperX.move(max_steps);         // Query both motors to move 360°
+  stepperY.move(max_steps);         // from current position.
+  stepperX.setMaxSpeed(600);        // Set both motor speeds to maximum
+  stepperY.setMaxSpeed(600);        // achievable speed.
+  
+    while (!xF || !yF) {            // Poll and accumulute high counts of ES's
+    if (Serial.available()) {           // Check if a stop command was
+      if (Serial.read() == 'S') return; // received.
+    }  
     if (!xF) {
       stepperX.run();
-      if (digitalRead(X_HOME_PIN) == LOW) cX++;
-      else cX = 0;
-      if (cX > 200) {
-        stepperX.stop();
+      if (digitalRead(X_HOME_PIN) == HIGH) cX++;
+      //else cX = 0;
+      if (cX > 100) {                   // Stop X_motor until it has detected
+        stepperX.stop();                // one full degree with ES high.
         xF = true;
       }
     }
     if (!yF) {
       stepperY.run();
-      if (digitalRead(Y_HOME_PIN) == LOW) cY++;
-      else cY = 0;
-      if (cY > 200) {
-        stepperY.stop();
+      if (digitalRead(Y_HOME_PIN) == HIGH) cY++;
+      //else cY = 0;
+      if (cY > 100) {                 // Stop Y_motor until it has detected
+        stepperY.stop();              // one full degree with ES high.
         yF = true;
       }
     }
-  }
-  while (stepperX.run() || stepperY.run())
-    ;
-  delay(500);
+    stepperX.setCurrentPosition(0);
+    stepperY.setCurrentPosition(0);
+    Serial.println("HOME:1"); 
+    Serial.println("STATUS:HOMING_OK");
+  }  // End of while (!xF || !yF)
+  
+  while (stepperX.run() || stepperY.run()); // Wait for motors to stop.
+    delay(500);
 
-  // FASE 2
+  /*
+  // FASE 2: Mover motores 4000 pasos y regresar 5000
   stepperX.setCurrentPosition(0);
   stepperX.move(4000);
   stepperX.setMaxSpeed(600);
@@ -429,12 +468,13 @@ void rutinaHomeSimultanea() {
     }
   }
 
-  stepperX.setCurrentPosition(0);
-  stepperY.setCurrentPosition(0);
-  Serial.println("HOME:1");
-  Serial.println("STATUS:HOMING_OK");
-  Serial.println("IDLE");
-  reportarPosicion();
+*/
   digitalWrite(X_ENABLE_PIN, HIGH);
   digitalWrite(Y_ENABLE_PIN, HIGH);
-}
+  /*stepperX.setCurrentPosition(0);
+  stepperY.setCurrentPosition(0);
+  Serial.println("HOME:1"); 
+  Serial.println("STATUS:HOMING_OK");]*/
+  Serial.println("IDLE");
+  reportarPosicion();  
+}// End of rutinaHomeSimultanea
