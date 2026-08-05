@@ -57,6 +57,7 @@ void reportarPosicion();
 void leerYReportarSensores();
 void rutinaHomeSimultanea(unsigned int dir);
 void barridoAngular(float gradosTotales, float resolucion);
+void unhome();
 
 void setup() {
   Serial.begin(115200);
@@ -171,11 +172,12 @@ void loop() {
       leerYReportarSensores();
     } else if (cmdChar == '?') {        // Report current position
       reportarPosicion();
+    } else if (cmdChar == 'U') {        // Un-home motors
+      unhome();
     }
-
     while (Serial.available() > 0) Serial.read();
-  }
-}  // End of loop
+  } // End of Serial.available()
+}  // End of loop()
 
 //  BARRIDO ANGULAR DE ALTA VELOCIDAD
 void barridoAngular(float gradosTotales, float resolucion) {
@@ -435,3 +437,26 @@ void rutinaHomeSimultanea(unsigned int dir) {
   Serial.println("IDLE");
   reportarPosicion();  
 }// End of rutinaHomeSimultanea
+
+void unhome(){ // Call on Matlab exit to ensure no ES is on high state
+  
+  long unhome_steps = 500;
+  Serial.println("unhomming...");
+  
+  if (digitalRead(X_HOME_PIN) == HIGH || digitalRead(Y_HOME_PIN) == HIGH) {
+    stepperX.move(unhome_steps);         // Query both motors to move 5°
+    stepperY.move(unhome_steps);         // from current position.
+    stepperX.setMaxSpeed(600);        // Set both motor speeds to maximum
+    stepperY.setMaxSpeed(600);        // achievable speed.  
+
+      while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
+        stepperX.run();       // Keep polling motor position until target
+        stepperY.run();       // position has been achieved.
+      }
+  }
+  
+  delay(500);
+
+  digitalWrite(X_ENABLE_PIN, HIGH);
+  digitalWrite(Y_ENABLE_PIN, HIGH);
+} 
