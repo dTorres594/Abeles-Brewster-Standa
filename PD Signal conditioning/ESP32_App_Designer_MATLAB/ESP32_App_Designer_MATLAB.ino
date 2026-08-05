@@ -210,11 +210,10 @@ void barridoAngular(float gradosTotales, float resolucion) {
   // Variable para controlar la frecuencia de envío de datos
   // No queremos saturar, enviamos cada cierto tiempo o pasos
   unsigned long lastMicros = 0;
-  const long intervaloLectura = 2000;  // Leer cada 2ms (500Hz de muestreo)
+  const long  intervaloLectura = 2000;  // Leer cada 2ms (500Hz de muestreo)
 
   // BUCLE DE MOVIMIENTO CONTINUO
   while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
-
     // 1. Mover Motores (Prioridad Alta)
     stepperX.run();
     stepperY.run();
@@ -229,13 +228,12 @@ void barridoAngular(float gradosTotales, float resolucion) {
         stepperY.stop();
 
         // Bucle de frenado suave (Deceleración)
-        while (stepperX.run() || stepperY.run())
-          ;
+        while (stepperX.run() || stepperY.run());
 
         // Salimos de la función inmediatamente
         return;
       }
-    }
+    } // End of Serial.available
 
     // 3. Tomar Datos "Al Vuelo"
     if (micros() - lastMicros >= intervaloLectura) {
@@ -256,7 +254,7 @@ void barridoAngular(float gradosTotales, float resolucion) {
       v2 = ads.computeVolts(adc1);
       
       // Enviar: AnguloReal, V1, V2
-      Serial.print(anguloReal, 4);
+      Serial.print(anguloReal, 3);
       Serial.print(",");
       Serial.print(v1, 4);
       Serial.print(",");
@@ -347,7 +345,7 @@ void reportarPosicion() {
   Serial.println("°");
   Serial.print("HOME:");
   Serial.print(digitalRead(X_HOME_PIN) == HIGH);  // #Diego: Revisar lógica
-  Serial.print("°,");
+  Serial.print(",");
   Serial.println(digitalRead(Y_HOME_PIN) == HIGH);
 } // End of reportarPosicion
 
@@ -358,11 +356,11 @@ void rutinaHomeSimultanea(unsigned int dir) {
   long max_steps;
 
   // Unhome for 5°, seek physical home during 360°
-  if (dir == 1){  // Home CW
+  if (dir == 1){  // Home CCW
     unhome_steps = 500;
     max_steps = -36000;
   }
-  else{ // Home CCW
+  else{ // Home CW
     unhome_steps = -500;
     max_steps = 36000;
   }
@@ -399,13 +397,17 @@ void rutinaHomeSimultanea(unsigned int dir) {
   
     while (!xF || !yF) {            // Poll and accumulute high counts of ES's
     if (Serial.available()) {           // Check if a stop command was
-      if (Serial.read() == 'S') return; // received.
+      if (Serial.read() == 'S'){        // received.
+        stepperX.stop();
+        stepperY.stop();
+        return; 
+       }
     }  
     if (!xF) {
       stepperX.run();
       if (digitalRead(X_HOME_PIN) == HIGH) cX++;
       //else cX = 0;
-      if (cX > 100) {                   // Stop X_motor until it has detected
+      if (cX > 20) {                   // Stop X_motor until it has detected
         stepperX.stop();                // one full degree with ES high.
         xF = true;
       }
@@ -414,67 +416,22 @@ void rutinaHomeSimultanea(unsigned int dir) {
       stepperY.run();
       if (digitalRead(Y_HOME_PIN) == HIGH) cY++;
       //else cY = 0;
-      if (cY > 100) {                 // Stop Y_motor until it has detected
+      if (cY > 20) {                 // Stop Y_motor until it has detected
         stepperY.stop();              // one full degree with ES high.
         yF = true;
       }
-    }
-    stepperX.setCurrentPosition(0);
-    stepperY.setCurrentPosition(0);
-    Serial.println("HOME:1"); 
-    Serial.println("STATUS:HOMING_OK");
+    }    
   }  // End of while (!xF || !yF)
   
   while (stepperX.run() || stepperY.run()); // Wait for motors to stop.
-    delay(500);
-
-  /*
-  // FASE 2: Mover motores 4000 pasos y regresar 5000
-  stepperX.setCurrentPosition(0);
-  stepperX.move(4000);
-  stepperX.setMaxSpeed(600);
-  while (stepperX.distanceToGo() != 0) {
-    stepperX.run();
-    if (digitalRead(X_HOME_PIN) == LOW) {
-      stepperX.stop();
-      break;
-    }
-  }
-  stepperX.move(-5000);
-  while (stepperX.distanceToGo() != 0) {
-    stepperX.run();
-    if (digitalRead(X_HOME_PIN) == LOW) {
-      stepperX.stop();
-      break;
-    }
-  }
-
-  stepperY.setCurrentPosition(0);
-  stepperY.move(4000);
-  stepperY.setMaxSpeed(600);
-  while (stepperY.distanceToGo() != 0) {
-    stepperY.run();
-    if (digitalRead(Y_HOME_PIN) == LOW) {
-      stepperY.stop();
-      break;
-    }
-  }
-  stepperY.move(-5000);
-  while (stepperY.distanceToGo() != 0) {
-    stepperY.run();
-    if (digitalRead(Y_HOME_PIN) == LOW) {
-      stepperY.stop();
-      break;
-    }
-  }
-
-*/
+  delay(500);
+ 
   digitalWrite(X_ENABLE_PIN, HIGH);
   digitalWrite(Y_ENABLE_PIN, HIGH);
-  /*stepperX.setCurrentPosition(0);
+  stepperX.setCurrentPosition(0);
   stepperY.setCurrentPosition(0);
   Serial.println("HOME:1"); 
-  Serial.println("STATUS:HOMING_OK");]*/
+  Serial.println("STATUS:HOMING_OK");
   Serial.println("IDLE");
   reportarPosicion();  
 }// End of rutinaHomeSimultanea
