@@ -267,6 +267,7 @@ void barridoAngular(float gradosTotales, float resolucion) {
   }
 
   Serial.println("END_BARRIDO");
+  Serial.println("IDLE");
 
   // Asegurar posición final exacta
   reportarPosicion();
@@ -352,18 +353,18 @@ void reportarPosicion() {
 } // End of reportarPosicion
 
 // Función para ejecutar rutina de enviar a Home ambos motores de manera simultánea
-// Si dir == 1, la dirección de Home es CW; si dir == 2, la dirección es CCW.
+// Si dir == 1, la dirección de Home es CCW; si dir == 2, la dirección es CW.
 void rutinaHomeSimultanea(unsigned int dir) {
   long unhome_steps;
   long max_steps;
 
   // Unhome for 5°, seek physical home during 360°
   if (dir == 1){  // Home CCW
-    unhome_steps = 500;
+    unhome_steps = 1000;
     max_steps = -36000;
   }
   else{ // Home CW
-    unhome_steps = -500;
+    unhome_steps = -1000;
     max_steps = 36000;
   }
   
@@ -426,7 +427,7 @@ void rutinaHomeSimultanea(unsigned int dir) {
   }  // End of while (!xF || !yF)
   
   while (stepperX.run() || stepperY.run()); // Wait for motors to stop.
-  delay(500);
+  delay(50);
  
   digitalWrite(X_ENABLE_PIN, HIGH);
   digitalWrite(Y_ENABLE_PIN, HIGH);
@@ -440,23 +441,27 @@ void rutinaHomeSimultanea(unsigned int dir) {
 
 void unhome(){ // Call on Matlab exit to ensure no ES is on high state
   
-  long unhome_steps = 500;
-  Serial.println("unhomming...");
+  long unhome_steps = -1000;
+  Serial.println("Unhomming...");  
   
   if (digitalRead(X_HOME_PIN) == HIGH || digitalRead(Y_HOME_PIN) == HIGH) {
-    stepperX.move(unhome_steps);         // Query both motors to move 5°
+    digitalWrite(X_ENABLE_PIN, LOW);
+    digitalWrite(Y_ENABLE_PIN, LOW);
+    stepperX.move(unhome_steps);         // Query both motors to move 10°
     stepperY.move(unhome_steps);         // from current position.
     stepperX.setMaxSpeed(600);        // Set both motor speeds to maximum
-    stepperY.setMaxSpeed(600);        // achievable speed.  
+    stepperY.setMaxSpeed(600);        // achievable speed.         
 
       while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
         stepperX.run();       // Keep polling motor position until target
         stepperY.run();       // position has been achieved.
       }
+
+      digitalWrite(X_ENABLE_PIN, HIGH);
+      digitalWrite(Y_ENABLE_PIN, HIGH);
   }
   
   delay(500);
 
-  digitalWrite(X_ENABLE_PIN, HIGH);
-  digitalWrite(Y_ENABLE_PIN, HIGH);
+  
 } 
