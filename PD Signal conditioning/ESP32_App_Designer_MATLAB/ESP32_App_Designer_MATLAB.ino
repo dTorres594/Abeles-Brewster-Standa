@@ -1,4 +1,5 @@
 #include <AccelStepper.h>
+#include <MultiStepper.h>
 #include <Adafruit_ADS1X15.h>
 #include <Wire.h>
 
@@ -9,7 +10,7 @@
   - During cruise movement, acceleration is set to 4,000 steps/second^2. Maximum speed
   shoud be achieved in about 150 ms or 45 steps (0.45°).
   - When performing a sweep, MotorX moves at half the speed and acceleration for MotorY 
-  is halved as well. This ensures that both motors reach their maximum at speed at about
+  is halved as well. This ensures that both motors reach their maximum speed at about
   the same time (~150 ms).
 */
 
@@ -20,12 +21,12 @@
 #define X_STEP_PIN 25       // 9
 #define X_DIR_PIN 33        // 8
 #define X_ENABLE_PIN 32     // 7
-#define X_HOME_PIN 13       // 15
+#define X_HOME_PIN 9       // 16
 
 #define Y_STEP_PIN 14       // 12
 #define Y_DIR_PIN 27        // 11 
 #define Y_ENABLE_PIN 26     // 10
-#define Y_HOME_PIN 12       // 13
+#define Y_HOME_PIN 13       // 15
 
 // ***NOT USED ANYMORE. KEPT FOR COMPATIBILITY***
 #define SENSOR_1_PIN 36     // 3
@@ -39,6 +40,7 @@
 // OBJETOS
 AccelStepper stepperX(1, X_STEP_PIN, X_DIR_PIN);
 AccelStepper stepperY(1, Y_STEP_PIN, Y_DIR_PIN);
+MultiStepper steppers;
 Adafruit_ADS1115 ads;
 
 // ESPECIFICACIONES
@@ -51,6 +53,7 @@ bool motorX_Activo = false;
 bool motorY_Activo = false;
 int16_t adc0, adc1;
 float volts0, volts1;
+long positions[2] = {0};  // Container for motor positions
 
 // Pre-declaración de funciones prototipo
 void reportarPosicion();
@@ -92,6 +95,10 @@ void setup() {
   stepperY.setMaxSpeed(600);
   stepperY.setAcceleration(4000);
   stepperY.setCurrentPosition(0);
+
+  // Add steppers to multistepper object
+  steppers.addStepper(stepperX);
+  steppers.addStepper(stepperY);
 
   Serial.println("ESP32 READY");
   reportarPosicion();
@@ -181,6 +188,7 @@ void loop() {
 
 //  BARRIDO ANGULAR DE ALTA VELOCIDAD
 void barridoAngular(float gradosTotales, float resolucion) {
+  
   // 1. Configurar Velocidades de Crucero (Rápidas pero estables)
   stepperX.setMaxSpeed(300);
   stepperX.setAcceleration(2000);
@@ -205,9 +213,13 @@ void barridoAngular(float gradosTotales, float resolucion) {
   long targetX = posBaseX + pasosTotalesX;
   long targetY = posBaseY + pasosTotalesY;
 
+  positions[0] = targetX;
+  positions[1] = targetY;
+
   // Configurar movimiento
-  stepperX.moveTo(targetX);
-  stepperY.moveTo(targetY);
+  steppers.moveTo(positions);
+  /*stepperX.moveTo(targetX);
+  stepperY.moveTo(targetY);*/
 
   // Variable para controlar la frecuencia de envío de datos
   // No queremos saturar, enviamos cada cierto tiempo o pasos
@@ -215,10 +227,11 @@ void barridoAngular(float gradosTotales, float resolucion) {
   const long  intervaloLectura = 2000;  // Leer cada 2ms (500Hz de muestreo)
 
   // BUCLE DE MOVIMIENTO CONTINUO
-  while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
+  while (steppers.run()){
+  //while (stepperX.distanceToGo() != 0 || stepperY.distanceToGo() != 0) {
     // 1. Mover Motores (Prioridad Alta)
-    stepperX.run();
-    stepperY.run();
+    //stepperX.run();
+    //stepperY.run();
 
     // 2. Checar Paro (Sin bloquear)
     if (Serial.available() > 0) {
@@ -230,7 +243,7 @@ void barridoAngular(float gradosTotales, float resolucion) {
         stepperY.stop();
 
         // Bucle de frenado suave (Deceleración)
-        while (stepperX.run() || stepperY.run());
+        //while (stepperX.run() || stepperY.run());
 
         // Salimos de la función inmediatamente
         return;
@@ -240,13 +253,6 @@ void barridoAngular(float gradosTotales, float resolucion) {
     // 3. Tomar Datos "Al Vuelo"
     if (micros() - lastMicros >= intervaloLectura) {
       float anguloReal = stepperX.currentPosition() * GRADOS_POR_PASO;
-
-      // Lectura rápida ADC (Sin delayMicroseconds para no frenar motor)
-      /*int val1 = analogRead(SENSOR_1_PIN);
-      int val2 = analogRead(SENSOR_2_PIN);
-
-      float v1 = (val1 * 3.3) / 4095.0;
-      float v2 = (val2 * 3.3) / 4095.0;*/  // OBSOLETE. CONSIDER REMOVING
       float v1, v2;
 
       adc0 = ads.readADC_SingleEnded(0);
@@ -266,13 +272,14 @@ void barridoAngular(float gradosTotales, float resolucion) {
     }
   }
 
+  digitalWrite(X_ENABLE_PIN, HIGH);
+  digitalWrite(Y_ENABLE_PIN, HIGH);
+  
   Serial.println("END_BARRIDO");
   Serial.println("IDLE");
 
   // Asegurar posición final exacta
-  reportarPosicion();
-  digitalWrite(X_ENABLE_PIN, HIGH);
-  digitalWrite(Y_ENABLE_PIN, HIGH);
+  reportarPosicion();   
 
   // Restaurar velocidades manuales
   stepperX.setMaxSpeed(600);
@@ -412,7 +419,7 @@ void rutinaHomeSimultanea(unsigned int dir) {
       //else cX = 0;
       if (cX > 20) {                   // Stop X_motor until it has detected
         stepperX.stop();                // one full degree with ES high.
-        xF = true;
+        digitalWrite(X_ENABLE_PIN, HIGH);        xF = true;
       }
     }
     if (!yF) {
@@ -421,6 +428,7 @@ void rutinaHomeSimultanea(unsigned int dir) {
       //else cY = 0;
       if (cY > 20) {                 // Stop Y_motor until it has detected
         stepperY.stop();              // one full degree with ES high.
+        digitalWrite(Y_ENABLE_PIN, HIGH);
         yF = true;
       }
     }    
@@ -429,8 +437,8 @@ void rutinaHomeSimultanea(unsigned int dir) {
   while (stepperX.run() || stepperY.run()); // Wait for motors to stop.
   delay(50);
  
-  digitalWrite(X_ENABLE_PIN, HIGH);
-  digitalWrite(Y_ENABLE_PIN, HIGH);
+  //digitalWrite(X_ENABLE_PIN, HIGH);
+  //digitalWrite(Y_ENABLE_PIN, HIGH);
   stepperX.setCurrentPosition(0);
   stepperY.setCurrentPosition(0);
   Serial.println("HOME:1"); 
@@ -461,7 +469,5 @@ void unhome(){ // Call on Matlab exit to ensure no ES is on high state
       digitalWrite(Y_ENABLE_PIN, HIGH);
   }
   
-  delay(500);
-
-  
+  delay(500);  
 } 
